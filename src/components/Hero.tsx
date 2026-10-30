@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_70%_35%,#fde3b0_0%,#f8ead0_35%,var(--color-cream)_70%)] pt-24 pb-32 sm:pb-36 lg:pt-28 lg:pb-44"
+      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_70%_35%,#fde3b0_0%,#f8ead0_35%,var(--color-cream)_70%)] pt-[4.75rem] pb-36 sm:pb-36 lg:pt-28 lg:pb-44"
     >
       <Image
         src="/images/top_tree_branch.png"
@@ -13,17 +13,17 @@ export function Hero() {
         width={260}
         height={160}
         priority
-        className="pointer-events-none absolute -top-2 -right-6 z-10 w-44 sm:w-64 lg:-right-10 lg:w-[22rem]"
+        className="pointer-events-none absolute -top-1 -right-4 z-10 w-32 sm:w-64 lg:-right-10 lg:w-[22rem]"
       />
       <Image
         src="/images/floating_leaves.png"
         alt=""
         width={155}
         height={145}
-        className="pointer-events-none absolute top-28 -left-6 w-20 rotate-[-20deg] opacity-90 sm:w-28"
+        className="pointer-events-none absolute top-24 -left-4 w-16 rotate-[-20deg] opacity-90 sm:top-28 sm:w-28"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-4 sm:gap-10 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="relative z-20 flex flex-col items-center text-center lg:items-start lg:text-left">
           <h1 className="relative">
             <span className="sr-only">Fresh Over Fast</span>
@@ -33,20 +33,25 @@ export function Hero() {
               width={355}
               height={202}
               priority
-              className="w-[min(82vw,26rem)] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)]"
+              className="mx-auto w-[min(92vw,20.5rem)] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)] lg:mx-0"
             />
           </h1>
-          <p className="mt-6 max-w-md font-display text-xl leading-snug font-medium text-bark sm:text-2xl">
+          <p className="mt-4 max-w-[19rem] font-display text-[1.05rem] leading-snug font-medium text-bark sm:mt-6 sm:max-w-md sm:text-2xl">
             Home-style rotis and wholesome meals delivered to your doorstep.
           </p>
-          <Swoosh className="mt-3 h-3 w-40 text-saffron" />
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-            <PillButton href="#download">Order Now</PillButton>
+          <Swoosh className="mx-auto mt-2 h-2.5 w-32 text-saffron sm:mt-3 sm:h-3 sm:w-40 lg:mx-0" />
+          <div className="mt-6 flex w-full max-w-xs flex-col items-center gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-start">
+            <PillButton href="#download" className="w-full justify-center px-5 py-2.5 text-[0.95rem] sm:w-auto">
+              Order Now
+            </PillButton>
             <a
               href="#how-it-works"
-              className="font-display font-semibold text-leaf underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1 font-display text-[0.95rem] font-semibold text-leaf underline-offset-4 hover:underline"
             >
               See how it works
+              <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden>
+                <path d="M5 8l5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </a>
           </div>
         </div>
@@ -59,7 +64,7 @@ export function Hero() {
 
 function HeroScene() {
   return (
-    <div className="relative mx-auto aspect-[6/5] w-full max-w-[42rem]" aria-hidden>
+    <div className="relative mx-auto aspect-[1.05/1] w-full max-w-[42rem] sm:aspect-[6/5]" aria-hidden>
       <Image
         src="/images/clouds.png"
         alt=""
