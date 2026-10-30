@@ -11,7 +11,7 @@ export function MadeWithCare() {
         height={152}
         className="pointer-events-none absolute top-10 -left-8 w-24 rotate-[18deg] opacity-80 sm:w-32"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
           <SectionTitle
             eyebrow="Real food, brighter days"

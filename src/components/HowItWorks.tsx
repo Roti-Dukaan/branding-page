@@ -43,7 +43,7 @@ function DashedArrow() {
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="relative bg-cream-deep/60 py-20 sm:py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionTitle eyebrow="Good food, simple steps" title="How It Works" />
 
         <ol className="mt-14 flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-center md:gap-2">

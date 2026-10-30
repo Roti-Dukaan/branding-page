@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks, socialLinks, storeLinks } from "@/lib/site";
+import { DownloadQrCode } from "@/components/DownloadQrCode";
+import { SmartDownloadLink } from "@/components/SmartDownloadLink";
+import { navLinks, socialLinks } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
-
   return (
     <footer id="contact" className="bg-soil text-cream">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pt-6 pb-10 sm:px-8 md:grid-cols-[1.3fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-6 pb-10 sm:px-8 md:grid-cols-[1.2fr_1fr_1fr_auto] md:items-start">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
           <Image src="/images/logo.png" alt="Roti Dukaan" width={187} height={193} className="h-20 w-auto" />
           <p className="font-display text-xl font-medium">Fresh food. Happier days.</p>
@@ -24,9 +25,9 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a href={storeLinks.playStore} target="_blank" rel="noopener noreferrer" className="text-cream/80 transition hover:text-cream">
+              <SmartDownloadLink className="text-cream/80 transition hover:text-cream">
                 Download App
-              </a>
+              </SmartDownloadLink>
             </li>
           </ul>
         </nav>
@@ -50,10 +51,14 @@ export function Footer() {
             ))}
           </ul>
         </div>
+
+        <div className="flex justify-center md:justify-end">
+          <DownloadQrCode />
+        </div>
       </div>
 
       <div className="border-t border-cream/10">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-center text-sm text-cream/60 sm:px-8">
+        <p className="mx-auto max-w-7xl px-5 py-5 text-center text-sm text-cream/60 sm:px-8">
           &copy; {year} Roti Dukaan. All rights reserved.
         </p>
       </div>

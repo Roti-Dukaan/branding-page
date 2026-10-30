@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Roti Dukaan | Fresh Over Fast",
   description:
     "Home-style rotis and wholesome meals, freshly prepared every day and delivered to your doorstep.",
-  icons: { icon: "/images/logo.png" },
+  icons: {
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/apple-icon", type: "image/png" }],
+  },
   openGraph: {
     title: "Roti Dukaan | Fresh Over Fast",
     description:

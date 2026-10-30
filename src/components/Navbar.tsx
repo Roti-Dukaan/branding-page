@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/lib/site";
-import { PillButton } from "./ui";
+import { SmartDownloadPillButton } from "./SmartDownloadPillButton";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -51,9 +51,9 @@ export function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <PillButton href="#download" className="px-5 py-2.5 text-[0.95rem]">
+          <SmartDownloadPillButton className="px-5 py-2.5 text-[0.95rem]">
             Download App
-          </PillButton>
+          </SmartDownloadPillButton>
         </div>
 
         <button
@@ -84,9 +84,12 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <PillButton href="#download" className="w-full justify-center">
+          <SmartDownloadPillButton
+            className="w-full justify-center"
+            onNavigate={() => setOpen(false)}
+          >
             Download App
-          </PillButton>
+          </SmartDownloadPillButton>
         </div>
       )}
     </header>

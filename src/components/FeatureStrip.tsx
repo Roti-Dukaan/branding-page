@@ -26,7 +26,7 @@ const features = [
 export function FeatureStrip() {
   return (
     <section aria-label="Why Roti Dukaan" className="relative z-30 -mt-24 px-5 sm:-mt-28 sm:px-8">
-      <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-8 rounded-[2rem] border border-sand/60 bg-white/90 px-4 py-8 shadow-[0_24px_50px_-28px_rgba(74,37,18,0.45)] backdrop-blur sm:px-8 lg:grid-cols-4 lg:divide-x lg:divide-sand/70">
+      <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 rounded-[2rem] border border-sand/60 bg-white/90 px-4 py-8 shadow-[0_24px_50px_-28px_rgba(74,37,18,0.45)] backdrop-blur sm:px-8 lg:grid-cols-4 lg:divide-x lg:divide-sand/70">
         {features.map((f) => (
           <li key={f.title} className="flex flex-col items-center gap-3 px-3 text-center lg:flex-row lg:text-left">
             <Image

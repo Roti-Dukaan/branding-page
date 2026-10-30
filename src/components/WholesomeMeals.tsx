@@ -27,7 +27,7 @@ const values = [
 export function WholesomeMeals() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionTitle
           eyebrow="Good food, good days"
           title={

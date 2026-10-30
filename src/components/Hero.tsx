@@ -23,7 +23,7 @@ export function Hero() {
         className="pointer-events-none absolute top-28 -left-6 w-20 rotate-[-20deg] opacity-90 sm:w-28"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="relative z-20 flex flex-col items-center text-center lg:items-start lg:text-left">
           <h1 className="relative">
             <span className="sr-only">Fresh Over Fast</span>
@@ -88,14 +88,23 @@ function HeroScene() {
 
       <div className="absolute inset-x-[-6%] bottom-[4%] h-[34%] rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(236,217,182,0.95)_0%,rgba(236,217,182,0)_70%)]" />
 
-      <Image
-        src="/images/delivery_truck.png"
-        alt=""
-        width={313}
-        height={207}
-        priority
-        className="absolute bottom-[20%] left-[-2%] z-10 w-[54%] drop-shadow-[0_18px_14px_rgba(74,37,18,0.25)]"
-      />
+      <div className="animate-ride-in absolute bottom-[23%] left-[-4%] z-10 w-[56%]">
+        <div className="absolute inset-x-[14%] bottom-[1%] h-[7%] rounded-[50%] bg-bark/25 blur-[3px]" />
+        <span className="animate-speed-line absolute top-[40%] right-[-6%] h-[3px] w-[16%] rounded-full bg-bark/25" />
+        <span className="animate-speed-line absolute top-[54%] right-[-12%] h-[3px] w-[22%] rounded-full bg-bark/20 [animation-delay:0.25s]" />
+        <span className="animate-speed-line absolute top-[68%] right-[-4%] h-[3px] w-[12%] rounded-full bg-bark/25 [animation-delay:0.5s]" />
+        <span className="animate-puff absolute right-[4%] bottom-[8%] h-[9%] w-[9%] rounded-full bg-sand" />
+        <span className="animate-puff absolute right-[1%] bottom-[12%] h-[6%] w-[6%] rounded-full bg-sand [animation-delay:0.6s]" />
+        <Image
+          src="/images/delivery_rider.png"
+          alt=""
+          width={1024}
+          height={682}
+          priority
+          sizes="(min-width: 1024px) 22rem, 52vw"
+          className="animate-ride-bob relative w-full drop-shadow-[0_14px_12px_rgba(74,37,18,0.25)]"
+        />
+      </div>
       <Image
         src="/images/curry_bowl.png"
         alt=""

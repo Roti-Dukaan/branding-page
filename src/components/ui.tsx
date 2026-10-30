@@ -41,19 +41,23 @@ export function PillButton({
 export function Eyebrow({
   children,
   tone = "leaf",
+  align = "center",
 }: {
   children: ReactNode;
   tone?: "leaf" | "light";
+  align?: "center" | "left";
 }) {
   const [text, rule] =
     tone === "light" ? ["text-[#f6d79a]", "bg-[#f6d79a]/60"] : ["text-leaf", "bg-leaf/50"];
   return (
     <p
-      className={`flex items-center gap-3 font-display text-sm font-semibold uppercase tracking-[0.2em] ${text}`}
+      className={`flex items-center gap-3 font-display text-sm font-semibold uppercase tracking-[0.2em] ${text} ${
+        align === "left" ? "justify-start" : "justify-center"
+      }`}
     >
       <span className={`h-px w-8 ${rule}`} aria-hidden />
       {children}
-      <span className={`h-px w-8 ${rule}`} aria-hidden />
+      {align === "center" ? <span className={`h-px w-8 ${rule}`} aria-hidden /> : null}
     </p>
   );
 }
