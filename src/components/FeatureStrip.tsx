@@ -25,12 +25,12 @@ const features = [
 
 export function FeatureStrip() {
   return (
-    <section aria-label="Why Roti Dukaan" className="relative z-30 -mt-6 px-3 sm:-mt-28 sm:px-8">
-      <ul className="mx-auto grid max-w-7xl grid-cols-2 rounded-[1.5rem] border border-sand/60 bg-white/95 px-2 py-2 shadow-[0_24px_50px_-28px_rgba(74,37,18,0.45)] backdrop-blur sm:gap-y-8 sm:rounded-[2rem] sm:px-8 sm:py-8 lg:grid-cols-4 lg:divide-x lg:divide-sand/70">
+    <section aria-label="Why Roti Dukaan" className="relative z-30 -mt-6 px-4 sm:-mt-28 sm:px-8">
+      <ul className="mx-auto grid max-w-7xl grid-cols-2 rounded-[1.5rem] border border-sand/60 bg-white/95 px-2 py-1.5 shadow-[0_24px_50px_-28px_rgba(74,37,18,0.45)] backdrop-blur sm:gap-y-8 sm:rounded-[2rem] sm:px-8 sm:py-8 lg:grid-cols-4 lg:divide-x lg:divide-sand/70">
         {features.map((f, i) => (
           <li
             key={f.title}
-            className={`flex items-center gap-2 px-1.5 py-3 text-left sm:flex-col sm:gap-3 sm:px-3 sm:py-0 sm:text-center lg:flex-row lg:text-left ${
+            className={`flex items-center gap-2 px-1 py-3.5 text-left sm:flex-col sm:gap-3 sm:px-3 sm:py-0 sm:text-center lg:flex-row lg:text-left ${
               i % 2 === 0 ? "max-sm:border-r max-sm:border-sand/60" : ""
             } ${i < 2 ? "max-sm:border-b max-sm:border-sand/60" : ""}`}
           >
@@ -39,7 +39,7 @@ export function FeatureStrip() {
               alt=""
               width={88}
               height={88}
-              className="h-11 w-11 shrink-0 rounded-full object-cover sm:h-[4.5rem] sm:w-[4.5rem]"
+              className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-[4.5rem] sm:w-[4.5rem]"
             />
             <div className="min-w-0">
               <h3 className="font-display text-[0.78rem] leading-tight font-semibold whitespace-nowrap text-bark sm:text-lg sm:whitespace-normal">

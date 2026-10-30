@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_70%_35%,#fde3b0_0%,#f8ead0_35%,var(--color-cream)_70%)] pt-[4.5rem] pb-4 sm:pt-24 sm:pb-36 lg:pt-28 lg:pb-44"
+      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_70%_35%,#fde3b0_0%,#f8ead0_35%,var(--color-cream)_70%)] pt-[5.125rem] pb-4 sm:pt-24 sm:pb-36 lg:pt-28 lg:pb-44"
     >
       <Image
         src="/images/top_tree_branch.png"
@@ -13,7 +13,7 @@ export function Hero() {
         width={260}
         height={160}
         priority
-        className="pointer-events-none absolute top-10 -right-6 z-10 w-36 sm:-top-2 sm:w-64 lg:-right-10 lg:w-[22rem]"
+        className="pointer-events-none absolute -top-2 -right-6 z-10 w-44 sm:w-64 lg:-right-10 lg:w-[22rem]"
       />
       <Image
         src="/images/floating_leaves.png"
@@ -23,9 +23,9 @@ export function Hero() {
         className="pointer-events-none absolute top-28 -left-6 hidden w-28 rotate-[-20deg] opacity-90 sm:block"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-2 px-5 sm:gap-10 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-2 px-6 sm:gap-10 sm:px-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="relative z-20 flex flex-col items-start text-left sm:items-center sm:text-center lg:items-start lg:text-left">
-          <h1 className="relative">
+          <h1 className="relative -ml-2 sm:ml-0">
             <span className="sr-only">Fresh Over Fast</span>
             <Image
               src="/images/tagline_fresh_over_fast.png"
@@ -33,20 +33,20 @@ export function Hero() {
               width={355}
               height={202}
               priority
-              className="w-[72vw] max-w-[17.5rem] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)] sm:max-w-none"
+              className="w-[68.5vw] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)]"
             />
           </h1>
-          <p className="mt-3 max-w-[20.5rem] font-display text-[1.2rem] leading-snug font-medium text-bark sm:mt-6 sm:max-w-md sm:text-2xl">
+          <p className="-mt-2 ml-3.5 max-w-[20.5rem] font-display text-[1.2rem] leading-snug font-medium text-bark sm:mt-6 sm:ml-0 sm:max-w-md sm:text-2xl">
             Home-style rotis and wholesome meals delivered to your doorstep.
           </p>
-          <Swoosh className="mt-1.5 h-2 w-28 text-saffron sm:mt-3 sm:h-3 sm:w-40" />
-          <div className="mt-5 flex flex-col items-start gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:justify-start">
-            <PillButton href="#download" className="px-6 py-2.5 text-base sm:px-7 sm:py-3">
+          <Swoosh className="ml-3.5 h-2 w-[5.625rem] text-saffron sm:mt-3 sm:ml-0 sm:h-3 sm:w-40" />
+          <div className="mt-2.5 ml-3.5 flex flex-col items-start gap-2 sm:mt-8 sm:ml-0 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:justify-start">
+            <PillButton href="#download" className="max-sm:py-2! max-sm:text-[0.95rem]! sm:px-7!">
               Order Now
             </PillButton>
             <a
               href="#how-it-works"
-              className="inline-flex items-center gap-1 pl-2 font-display text-sm font-semibold text-leaf underline-offset-4 hover:underline sm:pl-0 sm:text-base"
+              className="inline-flex items-center gap-1 pl-3.5 font-display text-sm font-semibold text-leaf underline-offset-4 hover:underline sm:pl-0 sm:text-base"
             >
               See how it works
               <svg
@@ -74,7 +74,7 @@ export function Hero() {
 function HeroScene() {
   return (
     <div
-      className="relative -mx-5 -mt-24 aspect-[13/10] sm:mx-auto sm:mt-0 sm:aspect-[6/5] sm:w-full sm:max-w-[42rem]"
+      className="relative -mx-6 -mt-[4.5rem] aspect-[131/100] sm:mx-auto sm:mt-0 sm:aspect-[6/5] sm:w-full sm:max-w-[42rem]"
       aria-hidden
     >
       <Image
@@ -105,7 +105,7 @@ function HeroScene() {
 
       <div className="absolute inset-x-[-6%] bottom-[4%] h-[34%] rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(236,217,182,0.95)_0%,rgba(236,217,182,0)_70%)]" />
 
-      <div className="animate-ride-in absolute bottom-[28%] left-[32%] z-10 w-[46%] sm:bottom-[23%] sm:left-[-4%] sm:w-[56%]">
+      <div className="animate-ride-in absolute bottom-[24.8%] left-[21.2%] z-10 w-[54.6%] sm:bottom-[23%] sm:left-[-4%] sm:w-[56%]">
         <div className="absolute inset-x-[14%] bottom-[1%] h-[7%] rounded-[50%] bg-bark/25 blur-[3px]" />
         <span className="animate-speed-line absolute top-[40%] right-[-6%] h-[3px] w-[16%] rounded-full bg-bark/25" />
         <span className="animate-speed-line absolute top-[54%] right-[-12%] h-[3px] w-[22%] rounded-full bg-bark/20 [animation-delay:0.25s]" />
@@ -127,7 +127,7 @@ function HeroScene() {
         alt=""
         width={197}
         height={170}
-        className="absolute right-[5%] bottom-[10%] z-10 w-[21%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:right-[-1%] sm:bottom-[23%] sm:w-[25%]"
+        className="absolute right-[1.5%] bottom-[13.4%] z-10 w-[22.8%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:right-[-1%] sm:bottom-[23%] sm:w-[25%]"
       />
       <Image
         src="/images/roti_plate.png"
@@ -135,14 +135,14 @@ function HeroScene() {
         width={312}
         height={165}
         priority
-        className="absolute bottom-[2%] left-[36%] z-20 w-[45%] drop-shadow-[0_16px_14px_rgba(74,37,18,0.3)] sm:bottom-[3%] sm:left-auto sm:right-[8%] sm:w-[52%]"
+        className="absolute bottom-[3.4%] left-[39%] z-20 w-[49.2%] drop-shadow-[0_16px_14px_rgba(74,37,18,0.3)] sm:bottom-[3%] sm:left-auto sm:right-[8%] sm:w-[52%]"
       />
       <Image
         src="/images/paneer_curry.png"
         alt=""
         width={215}
         height={165}
-        className="absolute bottom-[5%] left-[13%] z-30 w-[25%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:bottom-0 sm:left-[16%] sm:w-[27%]"
+        className="absolute bottom-[4%] left-[18.2%] z-30 w-[26.7%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:bottom-0 sm:left-[16%] sm:w-[27%]"
       />
       <Image
         src="/images/leaves_cluster_3.png"
