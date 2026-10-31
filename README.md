@@ -34,6 +34,8 @@ Production domain **www.rotidukaan.com** is this repo (marketing + share landing
 | --- | --- |
 | `/menu/[slug]` | Product preview from API + “Open in app” / Play Store |
 | `/subscriptions/[id]` | Meal plan preview + app CTAs |
+| `/privacy-policy` | Privacy policy (same copy as next-frontend) |
+| `/contact` | Contact form + FAQs |
 
 The customer app shares `https://www.rotidukaan.com/menu/...` and `/subscriptions/...`. Deploy this project to Vercel for those URLs to work.
 

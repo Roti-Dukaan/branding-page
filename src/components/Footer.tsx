@@ -29,6 +29,16 @@ export function Footer() {
                 Download App
               </SmartDownloadLink>
             </li>
+            <li>
+              <Link href="/contact" className="text-cream/80 transition hover:text-cream">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy-policy" className="text-cream/80 transition hover:text-cream">
+                Privacy Policy
+              </Link>
+            </li>
           </ul>
         </nav>
 
