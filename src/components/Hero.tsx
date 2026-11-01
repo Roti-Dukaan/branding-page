@@ -30,8 +30,8 @@ export function Hero() {
             <Image
               src="/images/tagline_fresh_over_fast.png"
               alt=""
-              width={355}
-              height={202}
+              width={1024}
+              height={512}
               priority
               className="w-[68.5vw] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)]"
             />
