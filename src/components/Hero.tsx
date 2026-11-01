@@ -36,7 +36,7 @@ export function Hero() {
               className="w-[68.5vw] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)]"
             />
           </h1>
-          <p className="-mt-2 ml-3.5 max-w-[20.5rem] font-display text-[1.2rem] leading-snug font-medium text-bark sm:mt-6 sm:ml-0 sm:max-w-md sm:text-2xl">
+          <p className="mt-4 ml-3.5 max-w-[20.5rem] font-display text-[1.2rem] leading-snug font-medium text-bark sm:mt-6 sm:ml-0 sm:max-w-md sm:text-2xl">
             Home-style rotis and wholesome meals delivered to your doorstep.
           </p>
           <Swoosh className="ml-3.5 h-2 w-[5.625rem] text-saffron sm:mt-3 sm:ml-0 sm:h-3 sm:w-40" />
