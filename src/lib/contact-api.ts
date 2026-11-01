@@ -1,6 +1,6 @@
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
-  "https://api.rotidukaan.com";
+import { getApiOrigin } from "./env";
+
+const API_BASE = getApiOrigin();
 
 export type ContactFormPayload = {
   name: string;

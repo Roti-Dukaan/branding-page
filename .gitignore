@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Synced customer-web shop (local); run: node scripts/sync-shop-from-customer-web.mjs
+/src/shop/

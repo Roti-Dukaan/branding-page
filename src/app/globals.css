@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@source "../shop/**/*.{js,ts,jsx,tsx}";
+
+@import "./customer-theme.css";
 
 @theme {
   --color-cream: #fbf4e6;
@@ -94,6 +97,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  background: var(--color-cream);
 }
 
 body {

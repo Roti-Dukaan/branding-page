@@ -41,7 +41,7 @@ export function Hero() {
           </p>
           <Swoosh className="ml-3.5 h-2 w-[5.625rem] text-saffron sm:mt-3 sm:ml-0 sm:h-3 sm:w-40" />
           <div className="mt-2.5 ml-3.5 sm:mt-8 sm:ml-0 sm:flex sm:justify-center lg:justify-start">
-            <PillButton href="#download" className="max-sm:py-2! max-sm:text-[0.95rem]! sm:px-7!">
+            <PillButton href="/menu" className="max-sm:py-2! max-sm:text-[0.95rem]! sm:px-7!">
               Order Now
             </PillButton>
           </div>

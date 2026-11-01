@@ -1,0 +1,56 @@
+/* Align synced customer-web surfaces with marketing site cream background */
+.customer-web {
+  --color-background: var(--color-cream);
+  --color-warm-bg: var(--color-cream);
+  --color-muted: var(--color-cream-deep);
+  background-color: var(--color-cream);
+}
+
+.customer-web .glass-nav {
+  background-color: rgba(251, 244, 230, 0.9);
+}
+
+/* Login dialog illustration fallback + any legacy tan hex */
+.customer-web [class*="e8d9c8"],
+.customer-web [class*="E8D9C8"] {
+  background-color: var(--color-cream) !important;
+}
+
+/* Menu filters, image placeholders, search fields (amber tans → cream) */
+.customer-web [class*="bg-amber-50"] {
+  background-color: var(--color-cream-deep) !important;
+}
+
+.customer-web [class*="bg-amber-50/40"],
+.customer-web [class*="bg-amber-50\\/40"] {
+  background-color: color-mix(in srgb, var(--color-cream) 40%, transparent) !important;
+}
+
+.customer-web [class*="bg-amber-50/30"],
+.customer-web [class*="bg-amber-50\\/30"] {
+  background-color: color-mix(in srgb, var(--color-cream) 70%, transparent) !important;
+}
+
+.customer-web [class*="border-amber-"] {
+  border-color: color-mix(in srgb, var(--color-sand) 65%, transparent) !important;
+}
+
+.customer-web .bg-warm-bg,
+.customer-web [class*="bg-warm-bg"] {
+  background-color: var(--color-cream) !important;
+}
+
+.customer-web ::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+/* Menu filter sidebar / mobile bar — avoid stark white on cream page */
+.customer-web aside .bg-card,
+.customer-web .sticky.top-24 .bg-white {
+  background-color: color-mix(in srgb, var(--color-cream-deep) 45%, white) !important;
+  border-color: color-mix(in srgb, var(--color-sand) 70%, transparent) !important;
+}
+
+.customer-web .bg-background {
+  background-color: var(--color-cream) !important;
+}
