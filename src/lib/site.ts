@@ -5,9 +5,9 @@ export const fssaiLicense =
   process.env.NEXT_PUBLIC_FSSAI_LICENSE?.trim() || "23626028003051";
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const storeLinks = {

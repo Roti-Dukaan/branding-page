@@ -101,6 +101,12 @@ body {
   color: var(--color-bark);
   font-family: var(--font-sans);
   overflow-x: clip;
+  scroll-padding-top: 5.5rem;
+}
+
+#home,
+#about {
+  scroll-margin-top: 5.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

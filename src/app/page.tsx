@@ -1,3 +1,4 @@
+import { HashScroll } from "@/components/HashScroll";
 import { DownloadApp } from "@/components/DownloadApp";
 import { FeatureStrip } from "@/components/FeatureStrip";
 import { Footer } from "@/components/Footer";
@@ -9,6 +10,7 @@ import { WholesomeMeals } from "@/components/WholesomeMeals";
 export default function Home() {
   return (
     <>
+      <HashScroll />
       <Navbar />
       <main>
         <Hero />

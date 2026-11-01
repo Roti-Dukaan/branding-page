@@ -8,7 +8,7 @@ import { fssaiLicense, navLinks, socialLinks } from "@/lib/site";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer id="contact" className="bg-soil text-cream">
+    <footer id="site-footer" className="bg-soil text-cream">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-6 pb-10 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_auto] md:items-start">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
           <Image src="/images/logo.png" alt="Roti Dukaan" width={187} height={193} className="h-20 w-auto" />
@@ -33,11 +33,6 @@ export function Footer() {
               <SmartDownloadLink className="text-cream/80 transition hover:text-cream">
                 Download App
               </SmartDownloadLink>
-            </li>
-            <li>
-              <Link href="/contact" className="text-cream/80 transition hover:text-cream">
-                Contact
-              </Link>
             </li>
           </ul>
         </nav>

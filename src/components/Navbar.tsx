@@ -3,10 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/site";
 import { SmartDownloadPillButton } from "./SmartDownloadPillButton";
 
+function scrollToHomeSection(hashHref: string) {
+  const id = hashHref.replace(/^\/#/, "");
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.history.pushState(null, "", hashHref);
+}
+
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -25,7 +33,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-2 px-6 sm:px-8">
-        <Link href="#home" className="ml-5 flex shrink-0 items-center gap-2 md:ml-0" aria-label="Roti Dukaan home">
+        <Link href="/#home" className="ml-5 flex shrink-0 items-center gap-2 md:ml-0" aria-label="Roti Dukaan home">
           <Image
             src="/images/logo.png"
             alt="Roti Dukaan"
@@ -42,6 +50,11 @@ export function Navbar() {
               <Link
                 href={link.href}
                 className="font-display text-[1.05rem] font-medium text-bark transition hover:text-leaf"
+                onClick={(event) => {
+                  if (pathname !== "/" || !link.href.startsWith("/#")) return;
+                  event.preventDefault();
+                  scrollToHomeSection(link.href);
+                }}
               >
                 {link.label}
               </Link>
