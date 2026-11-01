@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { DownloadQrCode } from "@/components/DownloadQrCode";
 import { SmartDownloadLink } from "@/components/SmartDownloadLink";
-import { navLinks, socialLinks } from "@/lib/site";
+import { fssaiLicense, navLinks, socialLinks } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -12,6 +12,10 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
           <Image src="/images/logo.png" alt="Roti Dukaan" width={187} height={193} className="h-20 w-auto" />
           <p className="font-display text-xl font-medium">Fresh food. Happier days.</p>
+          <p className="text-sm text-cream/75">
+            FSSAI Lic. No.{" "}
+            <span className="font-medium text-cream">{fssaiLicense}</span>
+          </p>
         </div>
 
         <nav aria-label="Footer" className="text-center md:text-left">
@@ -68,9 +72,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/10">
-        <p className="mx-auto max-w-7xl px-5 py-5 text-center text-sm text-cream/60 sm:px-8">
-          &copy; {year} Roti Dukaan. All rights reserved.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-center text-sm text-cream/60 sm:flex-row sm:px-8 sm:text-left">
+          <p>&copy; {year} Roti Dukaan. All rights reserved.</p>
+          <p className="text-xs text-cream/50 sm:hidden">FSSAI Lic. No. {fssaiLicense}</p>
+        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,9 @@
 import { storeDownloadPath, storeUrls } from "./stores";
 
+/** Keep in sync with next-frontend `SITE_CONFIG.fssaiLicense`. */
+export const fssaiLicense =
+  process.env.NEXT_PUBLIC_FSSAI_LICENSE?.trim() || "23626028003051";
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
