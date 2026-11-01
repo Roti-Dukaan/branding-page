@@ -13,6 +13,10 @@ export function appSubscriptionDeepLink(packageId: string): string {
   return `${siteOrigin}/subscriptions/${encodeURIComponent(packageId)}`;
 }
 
+export function appInviteDeepLink(referralCode: string): string {
+  return `${siteOrigin}/invite/${encodeURIComponent(referralCode.trim())}`;
+}
+
 export function playStoreUrl(): string {
   return storeLinks.playStore;
 }
