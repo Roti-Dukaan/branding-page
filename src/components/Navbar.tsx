@@ -49,7 +49,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <SmartDownloadPillButton className="max-md:gap-1.5! max-md:px-3! max-md:py-1.5! max-md:text-xs! max-md:shadow-[0_4px_12px_-6px_rgba(31,90,46,0.55)] md:px-5! md:py-2.5! md:text-[0.95rem]! max-md:[&_svg]:h-3.5 max-md:[&_svg]:w-3.5">
+        <SmartDownloadPillButton className="max-md:gap-1.5! max-md:px-3.5! max-md:py-2.5! max-md:text-xs! max-md:shadow-[0_4px_12px_-6px_rgba(31,90,46,0.55)] md:px-5! md:py-3! md:text-[0.95rem]! max-md:[&_svg]:h-3.5 max-md:[&_svg]:w-3.5">
           Download App
         </SmartDownloadPillButton>
       </nav>

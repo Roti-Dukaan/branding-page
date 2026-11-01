@@ -15,7 +15,7 @@ export function SitePageHeader() {
             className="h-14 w-auto drop-shadow-sm"
           />
         </Link>
-        <SmartDownloadPillButton className="px-4! py-2! text-sm!">
+        <SmartDownloadPillButton className="px-4! py-2.5! text-sm! max-sm:py-3!">
           Download App
         </SmartDownloadPillButton>
       </div>
