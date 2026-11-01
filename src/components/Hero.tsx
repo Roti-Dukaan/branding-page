@@ -40,28 +40,10 @@ export function Hero() {
             Home-style rotis and wholesome meals delivered to your doorstep.
           </p>
           <Swoosh className="ml-3.5 h-2 w-[5.625rem] text-saffron sm:mt-3 sm:ml-0 sm:h-3 sm:w-40" />
-          <div className="mt-2.5 ml-3.5 flex flex-col items-start gap-2 sm:mt-8 sm:ml-0 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:justify-start">
+          <div className="mt-2.5 ml-3.5 sm:mt-8 sm:ml-0 sm:flex sm:justify-center lg:justify-start">
             <PillButton href="#download" className="max-sm:py-2! max-sm:text-[0.95rem]! sm:px-7!">
               Order Now
             </PillButton>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-1 pl-3.5 font-display text-sm font-semibold text-leaf underline-offset-4 hover:underline sm:pl-0 sm:text-base"
-            >
-              See how it works
-              <svg
-                viewBox="0 0 20 20"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M8 5l5 5-5 5" />
-              </svg>
-            </a>
           </div>
         </div>
 

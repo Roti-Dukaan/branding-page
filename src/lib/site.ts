@@ -7,7 +7,6 @@ export const fssaiLicense =
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "How It Works", href: "#how-it-works" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

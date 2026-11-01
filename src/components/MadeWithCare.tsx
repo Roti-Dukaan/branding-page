@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { PillButton, SectionTitle } from "./ui";
+import { SectionTitle } from "./ui";
 
 export function MadeWithCare() {
   return (
@@ -29,7 +29,6 @@ export function MadeWithCare() {
             slow-cooked sabzis, dals and curries made from simple, honest
             ingredients, so you can enjoy a wholesome meal without the wait.
           </p>
-          <PillButton href="#how-it-works">Our Story</PillButton>
         </div>
 
         <figure className="relative">
