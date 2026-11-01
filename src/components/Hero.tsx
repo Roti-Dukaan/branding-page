@@ -88,8 +88,8 @@ function HeroScene() {
         <Image
           src="/images/city_background.png"
           alt=""
-          width={365}
-          height={204}
+          width={1024}
+          height={512}
           priority
           sizes="(min-width: 1024px) 42rem, 100vw"
           className="w-full [mask-image:linear-gradient(to_bottom,black_75%,transparent)]"
