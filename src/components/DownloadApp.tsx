@@ -66,13 +66,14 @@ export function DownloadApp() {
                 className="absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,#f6c04a_0%,rgba(240,161,40,0.55)_42%,transparent_70%)] sm:h-80 sm:w-80"
                 aria-hidden
               />
-              <div className="relative w-52 sm:w-60 lg:w-64">
+              <div className="relative w-52 sm:w-60 lg:w-72">
                 <Image
                   src="/images/phone_mockup.png"
                   alt="The Roti Dukaan app on a phone"
-                  width={185}
-                  height={188}
-                  className="animate-float relative w-full drop-shadow-[0_24px_24px_rgba(0,0,0,0.35)]"
+                  width={748}
+                  height={819}
+                  sizes="(min-width: 1024px) 18rem, (min-width: 640px) 15rem, 13rem"
+                  className="animate-float relative h-auto w-full drop-shadow-[0_24px_24px_rgba(0,0,0,0.35)]"
                 />
                 <Image
                   src="/images/floating_leaves.png"
