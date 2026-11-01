@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { DownloadQrCode } from "@/components/DownloadQrCode";
 import { SmartDownloadLink } from "@/components/SmartDownloadLink";
+import { footerLegalLinks } from "@/lib/legal-routes";
 import { fssaiLicense, navLinks, socialLinks } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer id="contact" className="bg-soil text-cream">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-6 pb-10 sm:px-8 md:grid-cols-[1.2fr_1fr_1fr_auto] md:items-start">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-6 pb-10 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_auto] md:items-start">
         <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
           <Image src="/images/logo.png" alt="Roti Dukaan" width={187} height={193} className="h-20 w-auto" />
           <p className="font-display text-xl font-medium">Fresh food. Happier days.</p>
@@ -38,11 +39,19 @@ export function Footer() {
                 Contact
               </Link>
             </li>
-            <li>
-              <Link href="/privacy-policy" className="text-cream/80 transition hover:text-cream">
-                Privacy Policy
-              </Link>
-            </li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Legal" className="text-center md:text-left">
+          <h3 className="font-display text-lg font-semibold text-[#f6d79a]">Legal</h3>
+          <ul className="mt-4 space-y-2">
+            {footerLegalLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="text-cream/80 transition hover:text-cream">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
