@@ -4,7 +4,7 @@ import { Eyebrow } from "./ui";
 
 export function DownloadApp() {
   return (
-    <section id="download" className="relative overflow-hidden pt-16 sm:pt-20">
+    <section id="download" className="relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-20">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="relative overflow-hidden rounded-[2.5rem] bg-leaf px-6 py-12 text-cream sm:px-12 lg:px-16 lg:py-14">
           <Image
@@ -85,18 +85,6 @@ export function DownloadApp() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="relative mt-10" aria-hidden>
-        <div className="absolute inset-x-0 bottom-0 h-[14%] bg-soil" />
-        <Image
-          src="/images/bottom_wave_background.png"
-          alt=""
-          width={695}
-          height={178}
-          sizes="(min-width: 1280px) 80rem, 100vw"
-          className="relative mx-auto w-full max-w-7xl"
-        />
       </div>
     </section>
   );
