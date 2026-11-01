@@ -17,7 +17,7 @@ const features = [
     icon: "/images/icon_fast_delivery.png",
   },
   {
-    title: "Loved by Thousands",
+    title: "Loved by many",
     body: "Happy customers every day.",
     icon: "/images/icon_loved.png",
   },

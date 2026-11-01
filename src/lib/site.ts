@@ -19,12 +19,16 @@ export const storeLinks = {
 export const socialLinks = [
   {
     label: "Facebook",
-    href: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    href:
+      process.env.NEXT_PUBLIC_FACEBOOK_URL?.trim() ||
+      "https://www.facebook.com/share/1FTWZhnJr6/",
     icon: "/images/facebook_icon.png",
   },
   {
     label: "Instagram",
-    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    href:
+      process.env.NEXT_PUBLIC_INSTAGRAM_URL?.trim() ||
+      "https://www.instagram.com/rotidukaan/",
     icon: "/images/instagram_icon.png",
   },
   {
