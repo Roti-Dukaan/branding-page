@@ -9,8 +9,13 @@ export const metadata: Metadata = {
   description:
     "Home-style rotis and wholesome meals, freshly prepared every day and delivered to your doorstep.",
   icons: {
-    icon: [{ url: "/icon", type: "image/png" }],
-    apple: [{ url: "/apple-icon", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/roti_dukaan_logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "any", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/roti_dukaan_logo.png",
   },
   openGraph: {
     title: "Roti Dukaan | Fresh Over Fast",
