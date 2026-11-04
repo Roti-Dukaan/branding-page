@@ -7,7 +7,6 @@ import { useProfileStore } from "@shop/lib/stores/profile-store";
 import { useMediaQuery } from "@shop/lib/hooks";
 import { useAuthHydrated } from "@shop/hooks/useAuth";
 import { ProfileSidebar } from "@shop/features/profile/components/ProfileSidebar";
-import { ProfileAccountHome } from "@shop/features/profile/components/ProfileAccountHome";
 import { ProfileEdit } from "@shop/features/profile/components/ProfileEdit";
 import { ProfileOrders } from "@shop/features/profile/components/ProfileOrders";
 import { ProfileAddresses } from "@shop/features/profile/components/ProfileAddresses";
@@ -106,7 +105,7 @@ function ProfilePageInner() {
   const renderContent = () => {
     switch (activeTab) {
       case "account":
-        return isDesktop ? <ProfileEdit /> : <ProfileAccountHome />;
+        return <ProfileEdit />;
       case "profile":
         return <ProfileEdit />;
       case "addresses":
@@ -132,7 +131,7 @@ function ProfilePageInner() {
       case "support-detail":
         return <ProfileSupportDetail />;
       default:
-        return isDesktop ? <ProfileEdit /> : <ProfileAccountHome />;
+        return <ProfileEdit />;
     }
   };
 

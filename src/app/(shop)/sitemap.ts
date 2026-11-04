@@ -27,7 +27,7 @@ export default async function sitemap() {
   }));
 
   const productEntries = menuSlugs.map((slug) => ({
-    url: `${SITE_URL}/menu/${slug}`,
+    url: `${SITE_URL}/menu/${slug}/view`,
     lastModified,
     changeFrequency: "weekly",
     priority: 0.7,

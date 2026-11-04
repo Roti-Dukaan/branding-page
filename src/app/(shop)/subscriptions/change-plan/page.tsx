@@ -30,7 +30,7 @@ export default function ChangePlanCheckoutPage() {
         </div>
         <DownloadAppPrompt
           title="Download the app to change your plan"
-          description="Open the Roti Dukaan app to change plans, update slots, pause, or skip deliveries."
+          description="Open the Roti Dukaan app to change plans, update slots, pause, or skip meals."
         />
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/profile?tab=subscriptions" className={cn(buttonVariants({ variant: "outline" }))}>

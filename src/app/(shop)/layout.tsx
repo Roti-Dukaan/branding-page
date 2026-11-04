@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { BrandingShopHeader } from "@/components/BrandingShopHeader";
 import { Footer } from "@/components/Footer";
 import { ShopDialogs } from "@/components/ShopDialogs";
+import { BrandingFloatingCartBar } from "@/components/BrandingFloatingCartBar";
 import AuthProvider from "@shop/components/AuthProvider";
 import QueryProvider from "@shop/components/providers/query-provider";
 import { KitchenStatusProvider } from "@shop/components/kitchen/KitchenStatusProvider";
@@ -13,7 +14,7 @@ import "./shop-branding-overrides.css";
 
 export default function ShopLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="customer-web min-h-screen flex flex-col bg-cream text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+    <div className="customer-web min-h-screen flex flex-col bg-cream text-bark overflow-x-clip selection:bg-leaf/15 selection:text-leaf">
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
         <TooltipProvider>
           <QueryProvider>
@@ -21,8 +22,9 @@ export default function ShopLayout({ children }: { children: ReactNode }) {
               <AuthProvider>
                 <BrandingShopHeader />
                 <ShopDialogs />
-                <main className="flex-grow pt-20">{children}</main>
+                <main className="flex-grow pb-24 pt-20 sm:pb-28">{children}</main>
                 <Footer />
+                <BrandingFloatingCartBar />
               </AuthProvider>
             </KitchenStatusProvider>
           </QueryProvider>

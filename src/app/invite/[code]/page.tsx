@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { ShareLanding } from "@/components/ShareLanding";
 import { appInviteDeepLink } from "@/lib/share-links";
 
+function inviteAppPath(code: string) {
+  return `/invite/${encodeURIComponent(code.trim())}`;
+}
+
 type Props = { params: Promise<{ code: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -20,7 +24,8 @@ export default async function InviteSharePage({ params }: Props) {
     <ShareLanding
       title="You’re invited to Roti Dukaan"
       subtitle={`Use referral code ${displayCode} when you sign up. Complete your first eligible order to unlock wallet credits for you and your friend.`}
-      openInAppHref={appInviteDeepLink(displayCode)}
+      appPath={inviteAppPath(displayCode)}
+      webContinueHref={appInviteDeepLink(displayCode)}
     />
   );
 }

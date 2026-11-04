@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { CONTACT_FAQS } from "@/lib/faqs-content";
+import { BrandingFaqSection } from "@/components/BrandingFaqSection";
 import { submitContactMessage } from "@/lib/contact-api";
 import { Eyebrow } from "./ui";
 
@@ -19,8 +20,6 @@ export function ContactPageContent() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -179,34 +178,7 @@ export function ContactPageContent() {
           )}
         </div>
 
-        <div className="rounded-3xl border border-sand/80 bg-white p-6 shadow-[0_12px_40px_rgba(74,37,18,0.06)] sm:p-8">
-          <h3 className="font-display text-xl font-bold text-bark">Frequently asked questions</h3>
-          <div className="mt-4 space-y-3">
-            {CONTACT_FAQS.map((faq, index) => (
-              <div key={faq.question} className="overflow-hidden rounded-2xl border border-sand/70">
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="flex w-full items-center justify-between gap-3 p-4 text-left text-sm font-semibold text-bark transition hover:bg-cream/80"
-                  aria-expanded={openFaq === index}
-                >
-                  {faq.question}
-                  <span
-                    className={`shrink-0 text-leaf transition-transform ${openFaq === index ? "rotate-180" : ""}`}
-                    aria-hidden
-                  >
-                    ▾
-                  </span>
-                </button>
-                {openFaq === index ? (
-                  <div className="border-t border-sand/60 px-4 pb-4 pt-2 text-sm leading-relaxed text-bark/80">
-                    {faq.answer}
-                  </div>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </div>
+        <BrandingFaqSection items={CONTACT_FAQS} />
       </div>
     </main>
   );

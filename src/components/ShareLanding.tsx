@@ -1,29 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import { playStoreUrl } from "@/lib/share-links";
+import { headers } from "next/headers";
+import { openInAppHref as resolveOpenInAppHref, playStoreUrl } from "@/lib/app-open-links";
 import { storeLinks } from "@/lib/site";
+import { OpenInAppAutoRedirect } from "./OpenInAppAutoRedirect";
 
 type ShareLandingProps = {
   title: string;
   subtitle?: string | null;
   imageUrl?: string | null;
   priceLabel?: string | null;
-  openInAppHref: string;
+  /** In-app route path, e.g. `/menu/brown-rice` */
+  appPath: string;
+  /** Optional full web product/plan page for desktop browsers */
+  webContinueHref?: string | null;
   isVeg?: boolean;
 };
 
-export function ShareLanding({
+export async function ShareLanding({
   title,
   subtitle,
   imageUrl,
   priceLabel,
-  openInAppHref,
+  appPath,
+  webContinueHref,
   isVeg,
 }: ShareLandingProps) {
   const playStore = playStoreUrl();
+  const ua = (await headers()).get("user-agent") ?? "";
+  const openInApp = resolveOpenInAppHref(appPath, ua);
 
   return (
     <main className="min-h-screen bg-cream text-bark">
+      <OpenInAppAutoRedirect path={appPath} />
       <header className="border-b border-sand/80 bg-cream/95 px-5 py-4 sm:px-8">
         <Link href="/" className="inline-flex items-center gap-2 font-display text-lg font-bold text-leaf">
           <Image src="/images/logo.png" alt="" width={36} height={36} className="rounded-lg" />
@@ -61,11 +70,19 @@ export function ShareLanding({
             Order this in the Roti Dukaan app — fresh home-style meals delivered in Hyderabad.
           </p>
           <a
-            href={openInAppHref}
+            href={openInApp}
             className="inline-flex w-full items-center justify-center rounded-2xl bg-leaf px-6 py-3.5 font-display text-lg font-semibold text-cream transition hover:bg-leaf-dark"
           >
             Open in app
           </a>
+          {webContinueHref ? (
+            <Link
+              href={webContinueHref}
+              className="inline-flex w-full items-center justify-center rounded-2xl border border-sand bg-white px-6 py-3.5 font-semibold text-bark transition hover:border-leaf/40"
+            >
+              Continue on website
+            </Link>
+          ) : null}
           <a
             href={playStore}
             target="_blank"

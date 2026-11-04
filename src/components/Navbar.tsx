@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/site";
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
+import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -71,30 +72,13 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <BrandingHeaderDownloadButton onNavigate={() => setMobileOpen(false)} />
           <BrandingMobileNavSheet
             open={mobileOpen}
             onOpenChange={setMobileOpen}
             onNavClick={handleNavClick}
             isNavActive={(href) => isMarketingNavActive(pathname, href)}
           />
-          <Link
-            href="/#download"
-            className="max-md:hidden inline-flex items-center gap-2 rounded-full bg-leaf px-5 py-3 font-display text-[0.95rem] font-semibold text-cream shadow-[0_4px_12px_-6px_rgba(31,90,46,0.55)] transition hover:-translate-y-0.5 hover:bg-leaf-dark"
-          >
-            Download App
-            <svg
-              viewBox="0 0 20 20"
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <path d="M4 10h12M11 5l5 5-5 5" />
-            </svg>
-          </Link>
         </div>
       </nav>
     </header>

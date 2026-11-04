@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MarketingNavLinks } from "./MarketingNavLinks";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
-import { SmartDownloadPillButton } from "./SmartDownloadPillButton";
+import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 
 export function SitePageHeader() {
@@ -36,15 +36,13 @@ export function SitePageHeader() {
         <MarketingNavLinks className="flex-1 justify-center" />
 
         <div className="flex items-center gap-2">
+          <BrandingHeaderDownloadButton onNavigate={() => setMobileOpen(false)} />
           <BrandingMobileNavSheet
             open={mobileOpen}
             onOpenChange={setMobileOpen}
             onNavClick={handleNavClick}
             isNavActive={(href) => isMarketingNavActive(pathname, href)}
           />
-          <SmartDownloadPillButton className="max-md:hidden shrink-0 px-4! py-2.5! text-sm!">
-            Download App
-          </SmartDownloadPillButton>
         </div>
       </nav>
     </header>

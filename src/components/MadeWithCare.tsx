@@ -33,14 +33,14 @@ export function MadeWithCare() {
 
         <figure className="relative">
           <div className="absolute -inset-4 -z-10 rotate-[-2deg] rounded-[2.5rem] bg-cream-deep" aria-hidden />
-          <div className="overflow-hidden rounded-[2rem] bg-[#f6e3c3] shadow-[0_30px_50px_-30px_rgba(74,37,18,0.6)]">
+          <div className="overflow-hidden rounded-[2rem] bg-bark-dark shadow-[0_30px_50px_-30px_rgba(74,37,18,0.6)]">
             <Image
-              src="/images/cooking_roti.png"
-              alt="A fresh roti being cooked on a tawa, surrounded by bowls of flour and dal"
-              width={370}
-              height={192}
+              src="/images/steaming_roti_curry_spices.png"
+              alt="Steaming roti on a tawa with curry, flour, and spices on a wooden board"
+              width={1024}
+              height={524}
               sizes="(min-width: 1024px) 34rem, 100vw"
-              className="w-full scale-[1.03]"
+              className="h-auto w-full"
             />
           </div>
           <figcaption className="absolute -bottom-5 left-6 flex items-center gap-2 rounded-full bg-leaf px-5 py-2.5 font-display text-sm font-semibold text-cream shadow-lg sm:left-10">

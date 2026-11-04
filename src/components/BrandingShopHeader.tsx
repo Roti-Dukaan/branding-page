@@ -4,19 +4,17 @@ import { useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, User } from "lucide-react";
+import { User } from "lucide-react";
 import { navLinks } from "@/lib/site";
-import { useCartCount } from "@shop/lib/store";
 import { useAuthStore } from "@shop/lib/stores/auth-store";
 import { useMounted } from "@shop/lib/hooks";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
-import { ArrowRight } from "./ui";
+import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
 
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 
 export function BrandingShopHeader() {
   const pathname = usePathname();
-  const cartCount = useCartCount();
   const mounted = useMounted();
   const { isAuthenticated, setAuthDialogOpen } = useAuthStore();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -67,13 +65,6 @@ export function BrandingShopHeader() {
         </ul>
 
         <div className="flex items-center gap-1.5 sm:gap-3">
-          <BrandingMobileNavSheet
-            open={mobileOpen}
-            onOpenChange={setMobileOpen}
-            onNavClick={handleNavClick}
-            isNavActive={(href) => isMarketingNavActive(pathname, href)}
-          />
-
           {mounted && !isAuthenticated ? (
             <button
               type="button"
@@ -92,25 +83,13 @@ export function BrandingShopHeader() {
               Account
             </Link>
           ) : null}
-          <Link
-            href="/cart"
-            className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-sand/80 bg-white text-leaf transition hover:border-leaf/40 hover:bg-leaf-soft/50"
-            aria-label={cartCount ? `Cart, ${cartCount} items` : "Cart"}
-          >
-            <ShoppingBag className="h-5 w-5" strokeWidth={2.2} />
-            {cartCount > 0 ? (
-              <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-saffron px-1 text-[10px] font-bold text-white">
-                {cartCount > 99 ? "99+" : cartCount}
-              </span>
-            ) : null}
-          </Link>
-          <Link
-            href="/#download"
-            className="max-md:hidden inline-flex items-center gap-2 rounded-full bg-leaf px-5 py-3 font-display text-[0.95rem] font-semibold text-cream shadow-[0_4px_12px_-6px_rgba(31,90,46,0.55)] transition hover:-translate-y-0.5 hover:bg-leaf-dark"
-          >
-            Download App
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <BrandingHeaderDownloadButton onNavigate={closeMobile} />
+          <BrandingMobileNavSheet
+            open={mobileOpen}
+            onOpenChange={setMobileOpen}
+            onNavClick={handleNavClick}
+            isNavActive={(href) => isMarketingNavActive(pathname, href)}
+          />
         </div>
       </nav>
     </header>
