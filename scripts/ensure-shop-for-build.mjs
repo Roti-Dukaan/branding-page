@@ -30,16 +30,29 @@ function resolveNextFrontendRoot() {
 
   const cacheDir = path.join(brandingRoot, ".cache", "next-frontend");
   const branch = process.env.NEXT_FRONTEND_BRANCH || "development";
-  const repo =
-    process.env.NEXT_FRONTEND_REPO || "https://github.com/Roti-Dukaan/next-frontend.git";
+  const token =
+    process.env.GITHUB_TOKEN?.trim() || process.env.NEXT_FRONTEND_CLONE_TOKEN?.trim();
+  const repoBase =
+    process.env.NEXT_FRONTEND_REPO?.trim() ||
+    "https://github.com/Roti-Dukaan/next-frontend.git";
+  const repo = token
+    ? repoBase.replace("https://", `https://x-access-token:${token}@`)
+    : repoBase;
 
   if (!fs.existsSync(path.join(cacheDir, "src"))) {
     fs.rmSync(cacheDir, { recursive: true, force: true });
     fs.mkdirSync(path.dirname(cacheDir), { recursive: true });
-    console.log(`ensure-shop: cloning ${repo} (branch ${branch})…`);
-    execSync(`git clone --depth 1 --branch "${branch}" "${repo}" "${cacheDir}"`, {
-      stdio: "inherit",
-    });
+    console.log(`ensure-shop: cloning next-frontend (branch ${branch})…`);
+    try {
+      execSync(`git clone --depth 1 --branch "${branch}" "${repo}" "${cacheDir}"`, {
+        stdio: "inherit",
+      });
+    } catch {
+      console.error(
+        "ensure-shop: clone failed (private repo?). Commit src/shop to branding-page or set GITHUB_TOKEN on Vercel.",
+      );
+      process.exit(1);
+    }
   }
 
   return cacheDir;

@@ -1,0 +1,53 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  nav,
+  footer,
+  a[aria-label*="WhatsApp"],
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .invoice-page-shell {
+    background: white !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  .invoice-paper {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .invoice-table {
+    break-inside: auto;
+  }
+
+  .invoice-table tr {
+    break-inside: avoid;
+    break-after: auto;
+  }
+
+  .invoice-table thead {
+    display: table-header-group;
+  }
+}
