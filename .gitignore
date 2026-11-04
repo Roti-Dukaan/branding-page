@@ -41,5 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Synced customer-web shop (local); run: node scripts/sync-shop-from-customer-web.mjs
+# Synced customer-web shop (local); run: npm run sync:shop — CI runs ensure-shop-for-build.mjs
 /src/shop/
+
+# CI clone of next-frontend for shop sync
+.cache/

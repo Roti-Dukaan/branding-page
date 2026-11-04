@@ -10,7 +10,10 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const brandingRoot = path.join(__dirname, "..");
-const customerSrc = path.join(brandingRoot, "..", "next-frontend", "src");
+const customerWebRoot =
+  process.env.NEXT_FRONTEND_ROOT?.trim() ||
+  path.join(brandingRoot, "..", "next-frontend");
+const customerSrc = path.join(customerWebRoot, "src");
 const shopRoot = path.join(brandingRoot, "src", "shop");
 
 const COPY_DIRS = ["components", "hooks", "lib", "features", "services"];
@@ -128,7 +131,7 @@ const PUBLIC_ASSET_PATHS = [
   "about/our-kitchen.png",
 ];
 
-const customerPublic = path.join(brandingRoot, "..", "next-frontend", "public");
+const customerPublic = path.join(customerWebRoot, "public");
 const brandingPublic = path.join(brandingRoot, "public");
 
 for (const rel of PUBLIC_ASSET_PATHS) {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/ensure-shop-for-build.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "generate:qr": "node scripts/generate-qr.mjs",
