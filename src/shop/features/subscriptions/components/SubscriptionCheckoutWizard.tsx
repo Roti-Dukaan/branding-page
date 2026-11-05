@@ -233,7 +233,7 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
 
   useEffect(() => {
     if (!isAuthenticated) {
-      openAuthForCheckout();
+      openAuthForCheckout(null);
       return;
     }
     fetchAddresses();
@@ -597,12 +597,8 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
       toast.error("Complete all steps before continuing");
       return;
     }
-    if (!categoryMode && !isPlanChange && !itemsValid) {
+    if (!isPlanChange && !menuStepValid) {
       toast.error("Complete all steps before continuing");
-      return;
-    }
-    if (categoryMode && selectedCategoryIds.length === 0) {
-      toast.error("Select at least one category");
       return;
     }
     if (isPlanChange && !planChangeQuote) {
@@ -810,7 +806,7 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
         <p className="text-muted-foreground">Please sign in to subscribe.</p>
-        <Button className="mt-4" onClick={openAuthForCheckout}>
+        <Button className="mt-4" onClick={() => openAuthForCheckout(null)}>
           Sign in
         </Button>
       </div>
@@ -1423,13 +1419,20 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
                   <span>
-                    <strong>{categoryMode ? "Categories" : "Rotis"}:</strong>{" "}
+                    <strong>
+                      {categoryMode ? "Categories" : skipPlanBuilder ? "Meals" : "Rotis"}:
+                    </strong>{" "}
                     {categoryMode
                       ? packageCategories
                           .filter((c) => selectedCategoryIds.includes(c.id))
                           .map((c) => c.categoryName ?? CATEGORY_LABELS[c.category] ?? c.category)
                           .join(", ")
-                      : selectedLines.map((i) => `${i.name} × ${i.quantity}`).join(", ")}
+                      : skipPlanBuilder
+                        ? (checkoutDraft?.weeklyMenuOverrides?.length
+                            ? `${checkoutDraft.weeklyMenuOverrides.length} customized day(s) on your plan`
+                            : "Included with your plan (customize weekly menu on the plan page)")
+                        : selectedLines.map((i) => `${i.name} × ${i.quantity}`).join(", ") ||
+                          "—"}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">

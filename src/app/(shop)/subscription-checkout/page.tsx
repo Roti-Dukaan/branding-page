@@ -69,7 +69,7 @@ function SubscriptionCheckoutInner() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      openAuthForCheckout();
+      openAuthForCheckout(null);
       return;
     }
     fetchAddresses();

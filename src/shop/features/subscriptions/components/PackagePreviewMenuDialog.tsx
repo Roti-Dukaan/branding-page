@@ -235,7 +235,7 @@ export function PackagePreviewMenuDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex max-h-[90vh] flex-col gap-0 p-0 sm:max-w-md">
+      <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md">
         <DialogHeader className="border-b border-border px-5 py-4 text-left">
           <DialogTitle>Customize weekly meal</DialogTitle>
           <DialogDescription>
@@ -318,13 +318,18 @@ export function PackagePreviewMenuDialog({
           )}
         </div>
 
-        <DialogFooter className="border-t border-border px-5 py-4 sm:justify-between">
-          <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
+        <DialogFooter className="mx-0 mb-0 shrink-0 gap-3 rounded-b-xl border-t border-border bg-muted/50 px-5 py-4 sm:flex-row sm:justify-between">
+          <Button type="button" variant="ghost" className="shrink-0" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button type="button" disabled={loading || !menuOptions.length} onClick={handleSave}>
-            Save for every {formatDayTitle(dayKey)}
-            <ChevronRight className="size-4" />
+          <Button
+            type="button"
+            disabled={loading || !menuOptions.length}
+            className="min-w-0 max-w-full shrink sm:max-w-none"
+            onClick={handleSave}
+          >
+            <span className="truncate">Save for every {formatDayTitle(dayKey)}</span>
+            <ChevronRight className="size-4 shrink-0" />
           </Button>
         </DialogFooter>
       </DialogContent>

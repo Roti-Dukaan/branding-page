@@ -6,6 +6,8 @@ interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   pendingCheckout: boolean;
+  /** After login: `/cart` for cart checkout; `null` = stay on current page (subscriptions). */
+  postLoginRedirect: string | null;
   authDialogOpen: boolean;
   accessToken: string | null;
   refreshToken: string | null;
@@ -17,9 +19,11 @@ interface AuthState {
   setUser: (user: User | null) => void;
   updateUser: (user: Partial<User> & Pick<User, "id">) => void;
   setPendingCheckout: (value: boolean) => void;
+  setPostLoginRedirect: (value: string | null) => void;
   setAuthDialogOpen: (value: boolean) => void;
   setProfileNameDialogOpen: (value: boolean) => void;
-  openAuthForCheckout: () => void;
+  /** @param returnTo Omit for cart (`/cart`). Pass `null` to remain on the current route after login. */
+  openAuthForCheckout: (returnTo?: string | null) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -28,6 +32,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       isAuthenticated: false,
       pendingCheckout: false,
+      postLoginRedirect: null,
       authDialogOpen: false,
       accessToken: null,
       refreshToken: null,
@@ -50,6 +55,7 @@ export const useAuthStore = create<AuthState>()(
           user: null,
           isAuthenticated: false,
           pendingCheckout: false,
+          postLoginRedirect: null,
           accessToken: null,
           refreshToken: null,
           isReturningCustomer: false,
@@ -74,6 +80,10 @@ export const useAuthStore = create<AuthState>()(
         set({ pendingCheckout: value });
       },
 
+      setPostLoginRedirect: (value: string | null) => {
+        set({ postLoginRedirect: value });
+      },
+
       setAuthDialogOpen: (value: boolean) => {
         set({ authDialogOpen: value });
       },
@@ -82,10 +92,11 @@ export const useAuthStore = create<AuthState>()(
         set({ profileNameDialogOpen: value });
       },
 
-      openAuthForCheckout: () => {
+      openAuthForCheckout: (returnTo?: string | null) => {
         set({
           authDialogOpen: true,
           pendingCheckout: true,
+          postLoginRedirect: returnTo === undefined ? "/cart" : returnTo,
         });
       },
     }),

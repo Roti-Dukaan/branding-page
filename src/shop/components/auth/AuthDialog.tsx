@@ -31,6 +31,9 @@ export default function AuthDialog() {
     authDialogOpen,
     setAuthDialogOpen,
     pendingCheckout,
+    postLoginRedirect,
+    setPendingCheckout,
+    setPostLoginRedirect,
   } = useAuthStore();
 
   const [step, setStep] = useState<AuthStep>("phone");
@@ -100,7 +103,13 @@ export default function AuthDialog() {
       setAuthDialogOpen(false);
       setOtp("");
       if (pendingCheckout) {
-        router.push("/cart");
+        const target = postLoginRedirect;
+        setPostLoginRedirect(null);
+        if (target) {
+          router.push(target);
+        } else {
+          setPendingCheckout(false);
+        }
       }
     } catch {
       // error displayed via toast in hook
