@@ -150,18 +150,6 @@ function PaymentTypeChoice({
   );
 }
 
-function PayOnlineMethodNote() {
-  return (
-    <div className="space-y-2">
-      <p className="text-sm font-medium">Payment method</p>
-      <div className="rounded-xl border border-border bg-muted/30 p-3 text-sm">
-        <p className="font-semibold text-foreground">Pay online</p>
-        <p className="text-xs text-muted-foreground">UPI / Card / Netbanking</p>
-      </div>
-    </div>
-  );
-}
-
 export type ChangePlanCheckoutContext = {
   subscriptionId: string;
   subscription: CustomerSubscription;
@@ -524,6 +512,66 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
   const canContinueAddress = !!addressId && addressServiceable === true && !checkingAddress;
   const minDate = useMemo(() => tomorrowDateKey(), []);
 
+  const checkoutStepNumbers = useMemo((): number[] => {
+    if (skipPlanBuilder) {
+      return skipSlotStep ? [2, 3, 5] : [2, 3, 4, 5];
+    }
+    return stepLabels.map((_, i) => i + 1);
+  }, [skipPlanBuilder, skipSlotStep, stepLabels]);
+
+  const isStepCompleteForNavigation = useCallback(
+    (stepNum: number): boolean => {
+      switch (stepNum) {
+        case 1:
+          return menuStepValid;
+        case 2:
+          if (isPlanChange) return !loadingPlanChangeQuote && !!planChangeQuote;
+          return Boolean(startDate);
+        case 3:
+          return canContinueAddress;
+        case 4:
+          return selectedSlotIds.length > 0;
+        default:
+          return true;
+      }
+    },
+    [
+      menuStepValid,
+      isPlanChange,
+      loadingPlanChangeQuote,
+      planChangeQuote,
+      startDate,
+      canContinueAddress,
+      selectedSlotIds.length,
+    ],
+  );
+
+  const canNavigateToStep = useCallback(
+    (target: number): boolean => {
+      if (target === step) return true;
+      const fromIdx = checkoutStepNumbers.indexOf(step);
+      const toIdx = checkoutStepNumbers.indexOf(target);
+      if (fromIdx < 0 || toIdx < 0) return false;
+      if (toIdx <= fromIdx) return true;
+      for (let i = fromIdx; i < toIdx; i++) {
+        if (!isStepCompleteForNavigation(checkoutStepNumbers[i])) return false;
+      }
+      return true;
+    },
+    [checkoutStepNumbers, step, isStepCompleteForNavigation],
+  );
+
+  const goToCheckoutStep = useCallback(
+    (target: number) => {
+      if (!canNavigateToStep(target)) {
+        toast.error("Complete the current step before skipping ahead");
+        return;
+      }
+      setStep(target);
+    },
+    [canNavigateToStep],
+  );
+
   const handleAddressContinue = async () => {
     if (!selectedAddress) {
       setAddressModalOpen(true);
@@ -844,25 +892,35 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
             : `${formatPrice(Number(plan.finalPrice ?? plan.price))} / ${plan.type.toLowerCase()}`}
       </p>
 
-      <div className="mt-8 flex flex-wrap gap-2 text-xs sm:text-sm">
+      <div className="mt-8 flex flex-wrap gap-2 text-xs sm:text-sm" role="tablist" aria-label="Checkout steps">
         {stepLabels.map((label, idx) => {
-          const s = skipPlanBuilder
-            ? (skipSlotStep ? [2, 3, 5] : [2, 3, 4, 5])[idx]
-            : idx + 1;
+          const s = checkoutStepNumbers[idx] ?? idx + 1;
+          const isCurrent = step === s;
+          const isPast = step > s;
+          const clickable = canNavigateToStep(s);
           return (
-            <span
-              key={label}
+            <button
+              key={`${s}-${label}`}
+              type="button"
+              role="tab"
+              aria-selected={isCurrent}
+              aria-current={isCurrent ? "step" : undefined}
+              disabled={!clickable}
+              onClick={() => goToCheckoutStep(s)}
               className={cn(
-                "rounded-full px-3 py-1 font-medium",
-                step === s
+                "rounded-full px-3 py-1 font-medium transition-colors",
+                isCurrent
                   ? "bg-primary text-primary-foreground"
-                  : step > s
+                  : isPast
                     ? "bg-primary/15 text-primary"
                     : "bg-muted text-muted-foreground",
+                clickable && "cursor-pointer",
+                clickable && !isCurrent && "hover:bg-primary/25",
+                !clickable && "cursor-not-allowed opacity-60",
               )}
             >
               {s}. {label}
-            </span>
+            </button>
           );
         })}
       </div>
@@ -1518,10 +1576,6 @@ export function SubscriptionCheckoutWizard({ plan, changePlan, checkoutDraft }: 
                   isPlanChange={isPlanChange}
                   planChangeQuote={planChangeQuote}
                 />
-              )}
-
-              {(!isPlanChange || (planChangeQuote && planChangeQuote.amountDue > 0)) && (
-                <PayOnlineMethodNote />
               )}
 
               <div className="flex items-center justify-between rounded-lg bg-muted/50 px-4 py-3">

@@ -326,16 +326,6 @@ function SubscriptionCheckoutInner() {
               </CardContent>
             </Card>
 
-            {/* Payment method */}
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="mb-4 text-lg font-bold text-foreground">Payment Method</h3>
-                <div className="rounded-xl border-2 border-primary bg-primary/5 p-4">
-                  <p className="font-semibold text-foreground">Online</p>
-                  <p className="text-xs text-muted-foreground">UPI / Card / Netbanking</p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Summary */}

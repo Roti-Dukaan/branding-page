@@ -108,6 +108,25 @@ body {
   scroll-padding-top: 5.5rem;
 }
 
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="tab"]:not(:disabled),
+summary,
+select:not(:disabled),
+input[type="checkbox"],
+input[type="radio"],
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]),
+a[href] {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 #home,
 #about {
   scroll-margin-top: 5.5rem;
