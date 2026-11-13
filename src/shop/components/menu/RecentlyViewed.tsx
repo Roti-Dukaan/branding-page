@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { getRecentlyViewed, getProductBySlug, resolveImageUrl } from "@shop/lib/product-utils";
 import AddToCartButton from "@shop/components/ui/add-to-cart-button";
 import type { ApiProduct } from "@shop/lib/types/api";
@@ -47,8 +47,8 @@ export default function RecentlyViewed({ currentSlug }: RecentlyViewedProps) {
             <Link href={`/menu/${product.slug}/view`}>
               <div className="relative h-24 overflow-hidden">
                 {product.imageUrl ? (
-                  <Image
-                    src={resolveImageUrl(product.imageUrl)}
+                  <CatalogImage
+                    src={product.imageUrl}
                     alt={product.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"

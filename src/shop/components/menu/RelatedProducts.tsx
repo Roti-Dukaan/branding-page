@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { ProductDetails } from "@shop/lib/types";
 import AddToCartButton from "@shop/components/ui/add-to-cart-button";
 
@@ -43,8 +43,8 @@ export default function RelatedProducts({
           >
             <Link href={`/menu/${product.slug}/view`}>
               <div className="relative h-36 overflow-hidden">
-                <Image
-                  src={product.image || "/foods/placeholder.jpg"}
+                <CatalogImage
+                  src={product.image}
                   alt={product.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

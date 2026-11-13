@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { Search, HelpCircle, Loader2, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import AddToCartButton from "@shop/components/ui/add-to-cart-button";
@@ -152,8 +152,8 @@ export default function MenuSection() {
                   <div onClick={() => router.push(`/menu/${item.slug}/view`)} className="cursor-pointer flex flex-col flex-1">
                     <div className="aspect-[4/3] w-full relative overflow-hidden bg-cream-deep">
                       {item.imageUrl ? (
-                        <Image
-                          src={resolveImageUrl(item.imageUrl)}
+                        <CatalogImage
+                          src={item.imageUrl}
                           alt={item.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"

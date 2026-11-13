@@ -1,15 +1,6 @@
 import type { ApiProduct, ApiCategory } from "./types/api";
 import { resolveFoodType, type FoodType } from "@shop/components/ui/VegIndicator";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-
-// Backend returns image paths relative to the API server; resolve them to absolute URLs
-// so they load correctly from the frontend origin.
-export function resolveImageUrl(url?: string | null): string {
-  if (!url) return "/foods/placeholder.jpg";
-  if (/^https?:\/\//.test(url)) return url;
-  return `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
-}
+export { resolveImageUrl, isCatalogCdnUrl, shouldUnoptimizeImage } from "./catalog-image";
 
 /** Build category pill labels for menu filters, excluding blank/duplicate names. */
 export function getCategoryFilterNames(

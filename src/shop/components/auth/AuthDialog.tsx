@@ -23,7 +23,7 @@ import OTPInput from "./OTPInput";
 
 type AuthStep = "phone" | "otp";
 
-const LOGIN_BRAND_IMAGE = "/auth/login-brand.png";
+const LOGIN_BRAND_IMAGE = "/auth/login-brand.webp";
 
 export default function AuthDialog() {
   const router = useRouter();

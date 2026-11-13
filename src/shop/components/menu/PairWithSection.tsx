@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { PairingItem, MenuItem } from "@shop/lib/types";
 import AddToCartButton from "@shop/components/ui/add-to-cart-button";
 
@@ -32,7 +32,7 @@ export default function PairWithSection({
           >
             <Link href={`/menu/${pairing.slug}/view`}>
               <div className="relative h-24 overflow-hidden">
-                <Image
+                <CatalogImage
                   src={pairing.image}
                   alt={pairing.name}
                   fill

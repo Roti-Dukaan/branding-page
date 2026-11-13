@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { useProfileStore } from "@shop/lib/stores/profile-store";
 import { useFoods } from "@shop/hooks/api/use-menu";
 import { Card, CardContent } from "@shop/components/ui/card";
@@ -78,8 +78,8 @@ export function ProfileFavorites() {
               <Card key={item.slug} className="overflow-hidden">
                 <div className="relative h-40 w-full">
                   {item.imageUrl ? (
-                    <Image
-                      src={resolveImageUrl(item.imageUrl)}
+                    <CatalogImage
+                      src={item.imageUrl}
                       alt={item.name}
                       fill
                       className="object-cover"

@@ -127,6 +127,7 @@ if (fs.existsSync(customerGlobals)) {
 /** Static assets referenced by synced UI (login modal, menu placeholders). */
 const PUBLIC_ASSET_PATHS = [
   "auth/login-brand.png",
+  "auth/login-brand.webp",
   "foods/placeholder.jpg",
   "about/our-kitchen.png",
 ];

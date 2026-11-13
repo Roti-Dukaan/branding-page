@@ -12,6 +12,7 @@ import { isSafeExternalUrl } from "@shop/lib/safe-external-url";
 import { useLocationStore } from "@shop/lib/stores/location-store";
 import { formatDeliveryLocationLabel } from "@shop/lib/geo/format-delivery-location";
 import { useMounted } from "@shop/lib/hooks";
+import { shouldUnoptimizeImage } from "@shop/lib/catalog-image";
 
 const DEFAULT_IMAGE =
   "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=800&fit=crop";
@@ -171,7 +172,15 @@ function HeroCarouselImage({
             transition={{ duration: 0.45 }}
             className="relative h-full w-full"
           >
-            <Image src={src} alt={alt} fill className="object-cover" priority sizes="(max-width: 1024px) 100vw, 50vw" />
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              unoptimized={shouldUnoptimizeImage(src)}
+            />
           </motion.div>
         </AnimatePresence>
       )}

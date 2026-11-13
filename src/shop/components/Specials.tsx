@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { CatalogImage } from "@shop/components/ui/CatalogImage";
 import { motion } from "motion/react";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@shop/components/ui/card";
@@ -76,8 +76,8 @@ export default function Specials() {
               <Card className="overflow-hidden border-border hover:shadow-lg transition-all duration-300 group">
                 <div className="relative h-56 overflow-hidden">
                   {item.imageUrl ? (
-                    <Image
-                      src={resolveImageUrl(item.imageUrl)}
+                    <CatalogImage
+                      src={item.imageUrl}
                       alt={item.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
