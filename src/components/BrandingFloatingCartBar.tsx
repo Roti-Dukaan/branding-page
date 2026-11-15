@@ -84,7 +84,9 @@ export function BrandingFloatingCartBar() {
     return null;
   }
 
-  const showKitchenStrip = mounted && !kitchenLoading && !acceptingOrders;
+  const isMarketingHome = pathname === "/";
+  const showKitchenStrip =
+    isMarketingHome && mounted && !kitchenLoading && !acceptingOrders;
   const showCartBar =
     mounted && itemCount > 0 && !shouldHideCartBar(pathname);
 

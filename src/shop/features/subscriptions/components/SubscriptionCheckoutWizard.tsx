@@ -125,7 +125,7 @@ function PaymentTypeChoice({
   return (
     <div className="space-y-3 border-t pt-4">
       <p className="text-sm font-medium">Payment type</p>
-      <div className="space-y-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {options.map((opt) => {
           const selected = autoRenew === opt.recurring;
           return (
@@ -134,14 +134,14 @@ function PaymentTypeChoice({
               type="button"
               onClick={() => onSelect(opt.recurring)}
               className={cn(
-                "w-full rounded-xl border-2 p-3 text-left text-sm transition-colors",
+                "min-h-full rounded-xl border-2 p-3 text-left text-sm transition-colors",
                 selected
                   ? "border-primary bg-primary/5 ring-1 ring-primary/30"
                   : "border-border bg-card hover:border-primary/40",
               )}
             >
               <p className="font-semibold text-foreground">{opt.title}</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">{opt.subtitle}</p>
+              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{opt.subtitle}</p>
             </button>
           );
         })}

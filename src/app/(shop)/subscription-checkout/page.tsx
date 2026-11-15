@@ -119,18 +119,29 @@ function SubscriptionCheckoutInner() {
   const planPrice = Number(planLine?.amount ?? snapshot.planPrice ?? grandTotal);
   const planDisplayName =
     planLine?.name ?? (snapshot.planName as string | undefined) ?? subscription?.plan?.name ?? "Subscription plan";
+  const firstDeliveryDate =
+    subscription?.startDate ?? (snapshot.startDate as string | undefined) ?? null;
   const isPlanPriced = planPrice > 0 && snapshotItems.every((it) => Number(it.lineTotal ?? 0) === 0);
+  const isPendingPayment = subscription?.status === "PENDING";
   const selectedSavedAddress =
     addresses.find((a) => a.id === selectedAddressId) ??
     addresses.find((a) => a.isDefault) ??
     addresses[0];
 
   useEffect(() => {
-    if (addresses.length > 0 && !selectedAddressId) {
+    if (addresses.length === 0) return;
+    const fromSubscription =
+      subscription?.addressId &&
+      addresses.find((a) => a.id === subscription.addressId)?.id;
+    if (fromSubscription) {
+      if (selectedAddressId !== fromSubscription) selectAddress(fromSubscription);
+      return;
+    }
+    if (!selectedAddressId) {
       const preferred = addresses.find((a) => a.isDefault) || addresses[0];
       selectAddress(preferred.id);
     }
-  }, [addresses, selectedAddressId, selectAddress]);
+  }, [addresses, selectedAddressId, selectAddress, subscription?.addressId]);
 
   const handlePayment = async () => {
     if (!session || !subscriptionId) return;
@@ -248,12 +259,26 @@ function SubscriptionCheckoutInner() {
           <ArrowLeft className="size-4" />
           Back to Subscriptions
         </Link>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Complete Your <span className="italic text-primary">Subscription</span>
+        <h1 className="font-display text-3xl font-bold tracking-tight text-bark">
+          {isPendingPayment ? (
+            <>
+              Complete <span className="text-leaf">payment</span>
+            </>
+          ) : (
+            <>
+              Complete your <span className="text-leaf">subscription</span>
+            </>
+          )}
         </h1>
+        {isPendingPayment ? (
+          <p className="mt-2 max-w-2xl text-sm text-bark/70 sm:text-base">
+            Your plan is saved. Confirm the delivery address below, then pay{" "}
+            {grandTotal > 0 ? formatPrice(grandTotal) : "the plan amount"} to activate it.
+          </p>
+        ) : null}
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="space-y-6 lg:col-span-7">
+          <div className="order-2 space-y-6 lg:order-1 lg:col-span-7">
             {/* Plan summary */}
             <Card>
               <CardContent className="space-y-3 p-6">
@@ -267,7 +292,7 @@ function SubscriptionCheckoutInner() {
                     </p>
                     <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
                       <CalendarDays className="size-3.5" />
-                      First delivery: {fmtDate(snapshot?.frozenAt as string | undefined)}
+                      Starts {fmtDate(firstDeliveryDate)}
                     </p>
                   </div>
                 </div>
@@ -286,22 +311,26 @@ function SubscriptionCheckoutInner() {
                     onValueChange={selectAddress}
                     className="space-y-3"
                   >
-                    {addresses.map((addr) => (
+                    {addresses.map((addr) => {
+                      const selected = selectedSavedAddress?.id === addr.id;
+                      return (
                       <label
                         key={addr.id}
                         className={`flex cursor-pointer items-start gap-4 rounded-xl border-2 p-4 transition-all ${
-                          selectedSavedAddress?.id === addr.id
+                          selected
                             ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/30"
                         }`}
                       >
                         <RadioGroupItem value={addr.id} />
                         <div className="flex-1">
-                          <p className="text-sm font-semibold capitalize">{addr.addressType}</p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className={`text-sm font-semibold capitalize ${selected ? "text-bark" : "text-foreground"}`}>
+                            {addr.addressType}
+                          </p>
+                          <p className={`text-sm ${selected ? "text-bark/80" : "text-muted-foreground"}`}>
                             {addr.name} | {addr.phone}
                           </p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className={`text-sm ${selected ? "text-bark/80" : "text-muted-foreground"}`}>
                             {addr.house}
                             {addr.street ? `, ${addr.street}` : ""}
                             {addr.area ? `, ${addr.area}` : ""}
@@ -309,11 +338,12 @@ function SubscriptionCheckoutInner() {
                             {addr.pincode}
                           </p>
                         </div>
-                        {selectedSavedAddress?.id === addr.id && (
+                        {selected && (
                           <CheckCircle2 className="size-5 text-primary" />
                         )}
                       </label>
-                    ))}
+                    );
+                    })}
                   </RadioGroup>
                 ) : (
                   <div className="text-sm text-muted-foreground">
@@ -328,8 +358,8 @@ function SubscriptionCheckoutInner() {
 
           </div>
 
-          {/* Summary */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
+          {/* Summary — first on mobile so Pay is visible without scrolling past addresses */}
+          <div className="order-1 lg:order-2 lg:col-span-5 lg:sticky lg:top-24">
             <Card>
               <CardContent className="p-6">
                 <h3 className="mb-4 border-b border-border pb-4 text-lg font-bold text-foreground">
@@ -387,7 +417,7 @@ function SubscriptionCheckoutInner() {
                 <Button
                   onClick={handlePayment}
                   disabled={isProcessing}
-                  className="mt-6 min-h-[48px] w-full bg-primary hover:bg-primary/90"
+                  className="mt-6 min-h-[48px] w-full bg-primary text-white hover:bg-primary/90"
                 >
                   {isProcessing ? (
                     <>

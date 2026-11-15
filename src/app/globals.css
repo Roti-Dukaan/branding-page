@@ -127,6 +127,11 @@ select:disabled,
   cursor: not-allowed;
 }
 
+/* Marketing homepage: avoid stuck lazy-load after returning from /menu, etc. */
+main img[data-nimg] {
+  opacity: 1;
+}
+
 #home,
 #about {
   scroll-margin-top: 5.5rem;

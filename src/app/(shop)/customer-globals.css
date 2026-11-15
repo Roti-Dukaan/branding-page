@@ -12,8 +12,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Keep fill-mode Next/Image constrained to its positioned parent */
-  [data-nimg="fill"] {
+  /* Shop only — do not leak to marketing homepage after client-side nav */
+  .customer-web [data-nimg="fill"] {
     position: absolute !important;
     inset: 0;
     width: 100% !important;

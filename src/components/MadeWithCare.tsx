@@ -40,10 +40,11 @@ export function MadeWithCare() {
               width={1024}
               height={524}
               sizes="(min-width: 1024px) 34rem, 100vw"
-              className="h-auto w-full"
+              priority
+              className="h-auto w-full object-cover"
             />
           </div>
-          <figcaption className="absolute -bottom-5 left-6 flex items-center gap-2 rounded-full bg-leaf px-5 py-2.5 font-display text-sm font-semibold text-cream shadow-lg sm:left-10">
+          <figcaption className="absolute -bottom-5 left-6 flex items-center gap-2 rounded-full bg-leaf px-5 py-2.5 font-display text-sm font-semibold text-white shadow-lg sm:left-10">
             <span className="h-2 w-2 rounded-full bg-saffron" aria-hidden />
             Freshly Prepared Every Day
           </figcaption>

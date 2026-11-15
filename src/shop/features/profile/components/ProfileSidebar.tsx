@@ -15,11 +15,11 @@ export function ProfileSidebar() {
   return (
     <div className="sticky top-24 flex flex-col">
       {/* User Card */}
-      <div className="rounded-xl bg-card p-5 ring-1 ring-foreground/10">
+      <div className="rounded-2xl border border-sand/80 bg-white/90 p-5 shadow-sm">
         <div className="flex items-center gap-3">
           <UserAvatar name={user?.name} phone={user?.phone} avatar={user?.avatar} size="lg" />
           <div className="min-w-0">
-            <p className="truncate font-heading text-base font-semibold text-foreground">
+            <p className="truncate font-display text-base font-semibold text-bark">
               {user?.name}
             </p>
             <p className="truncate text-sm text-muted-foreground">
@@ -33,7 +33,7 @@ export function ProfileSidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="mt-3 rounded-xl bg-card p-2 ring-1 ring-foreground/10">
+      <nav className="mt-3 rounded-2xl border border-sand/80 bg-white/90 p-2 shadow-sm">
         {PROFILE_NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.tab;
@@ -44,8 +44,8 @@ export function ProfileSidebar() {
               className={cn(
                 "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-leaf-soft font-semibold text-leaf"
+                  : "text-bark/70 hover:bg-cream-deep/80 hover:text-bark"
               )}
             >
               <Icon className="size-4 shrink-0" />

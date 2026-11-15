@@ -4,6 +4,7 @@
   --color-warm-bg: var(--color-cream);
   --color-muted: var(--color-cream-deep);
   background-color: var(--color-cream);
+  font-family: var(--font-sans);
   /* Home-style text + accents (menu/subscriptions copy unchanged) */
   --color-foreground: var(--color-bark);
   --color-card-foreground: var(--color-bark);
@@ -11,7 +12,7 @@
   --color-charcoal: var(--color-bark);
   --color-muted-foreground: color-mix(in srgb, var(--color-bark) 58%, white);
   --color-primary: var(--color-leaf);
-  --color-primary-foreground: var(--color-cream);
+  --color-primary-foreground: #ffffff;
   --color-ring: var(--color-leaf);
   --color-border: color-mix(in srgb, var(--color-sand) 78%, transparent);
   color: var(--color-bark);
@@ -113,62 +114,115 @@
 }
 
 /* Subscription funnel — match marketing homepage (Fredoka, bark, leaf CTAs) */
-.customer-web [data-brand-subscriptions] h1,
-.customer-web [data-brand-subscriptions] h2,
-.customer-web [data-brand-subscriptions] h3,
-.customer-web [data-brand-subscriptions] .font-heading {
+.customer-web [data-brand-shop] h1,
+.customer-web [data-brand-shop] h2,
+.customer-web [data-brand-shop] h3,
+.customer-web [data-brand-shop] .font-heading {
   font-family: var(--font-display);
   color: var(--color-bark);
 }
 
-.customer-web [data-brand-subscriptions] .text-foreground {
+.customer-web [data-brand-shop] .text-foreground {
   color: var(--color-bark);
 }
 
-.customer-web [data-brand-subscriptions] .text-muted-foreground {
+.customer-web [data-brand-shop] .text-muted-foreground {
   color: color-mix(in srgb, var(--color-bark) 62%, white);
 }
 
-.customer-web [data-brand-subscriptions] .text-primary {
+.customer-web [data-brand-shop] .text-primary {
   color: var(--color-leaf) !important;
 }
 
-.customer-web [data-brand-subscriptions] .border-primary {
+.customer-web [data-brand-shop] .border-primary {
   border-color: color-mix(in srgb, var(--color-leaf) 55%, transparent) !important;
 }
 
-.customer-web [data-brand-subscriptions] .ring-primary {
+.customer-web [data-brand-shop] .ring-primary {
   --tw-ring-color: var(--color-leaf) !important;
 }
 
-.customer-web [data-brand-subscriptions] .bg-primary\/5 {
+.customer-web [data-brand-shop] .bg-primary\/5 {
   background-color: color-mix(in srgb, var(--color-leaf-soft) 65%, white) !important;
 }
 
-.customer-web [data-brand-subscriptions] .bg-primary\/10 {
+.customer-web [data-brand-shop] .bg-primary\/10 {
   background-color: var(--color-leaf-soft) !important;
 }
 
-.customer-web [data-brand-subscriptions] button.bg-primary,
-.customer-web [data-brand-subscriptions] a.bg-primary,
-.customer-web [data-brand-subscriptions] .bg-primary.text-primary-foreground {
+/* Default + link CTAs use `border border-transparent` — do not treat as outline buttons */
+.customer-web [data-brand-shop] [data-slot="button"].bg-primary,
+.customer-web [data-brand-shop] button.bg-primary,
+.customer-web [data-brand-shop] a.bg-primary,
+.customer-web [data-brand-shop] a[data-slot="button"].bg-primary,
+.customer-web [data-brand-shop] .bg-primary.text-primary-foreground {
   background-color: var(--color-leaf) !important;
-  color: var(--color-cream) !important;
+  color: #ffffff !important;
 }
 
-.customer-web [data-brand-subscriptions] button.bg-primary:hover {
+.customer-web [data-brand-shop] [data-slot="button"].bg-primary:hover,
+.customer-web [data-brand-shop] button.bg-primary:hover,
+.customer-web [data-brand-shop] a.bg-primary:hover,
+.customer-web [data-brand-shop] a[data-slot="button"].bg-primary:hover {
   background-color: var(--color-leaf-dark) !important;
+  color: #ffffff !important;
 }
 
-.customer-web [data-brand-subscriptions] .rounded-full.bg-primary {
+.customer-web [data-brand-shop] [data-slot="button"].bg-primary svg,
+.customer-web [data-brand-shop] a.bg-primary svg,
+.customer-web [data-brand-shop] a[data-slot="button"].bg-primary svg {
+  color: currentColor;
+}
+
+.customer-web [data-brand-shop] .rounded-full.bg-primary {
   background-color: var(--color-saffron) !important;
-  color: var(--color-cream) !important;
+  color: #ffffff !important;
 }
 
-.customer-web [data-brand-subscriptions] .rounded-xl.border.bg-card,
-.customer-web [data-brand-subscriptions] .rounded-xl.border-border,
-.customer-web [data-brand-subscriptions] div.rounded-xl.border {
+.customer-web [data-brand-shop] .rounded-xl.border.bg-card,
+.customer-web [data-brand-shop] .rounded-xl.border-border,
+.customer-web [data-brand-shop] div.rounded-xl.border {
   border-radius: 1.25rem;
   border-color: color-mix(in srgb, var(--color-sand) 75%, transparent) !important;
   background-color: color-mix(in srgb, white 88%, var(--color-cream)) !important;
+}
+
+.customer-web [data-brand-shop] .font-display {
+  font-family: var(--font-display);
+}
+
+.customer-web [data-brand-shop] .font-display.text-bark,
+.customer-web [data-brand-shop] h1.font-display,
+.customer-web [data-brand-shop] h2.font-display,
+.customer-web [data-brand-shop] h3.font-display,
+.customer-web [data-brand-shop] p.font-display.text-bark {
+  color: var(--color-bark);
+}
+
+.customer-web [data-brand-shop] .rounded-2xl.border.bg-card,
+.customer-web [data-brand-shop] .rounded-2xl.border-border,
+.customer-web [data-brand-shop] div.rounded-2xl.border {
+  border-color: color-mix(in srgb, var(--color-sand) 75%, transparent) !important;
+  background-color: color-mix(in srgb, white 88%, var(--color-cream)) !important;
+}
+
+.customer-web [data-brand-shop] [data-slot="button"].border-border,
+.customer-web [data-brand-shop] a.border-border,
+.customer-web [data-brand-shop] [data-slot="button"].border.bg-background {
+  border-color: color-mix(in srgb, var(--color-sand) 80%, transparent) !important;
+  color: var(--color-bark) !important;
+}
+
+.customer-web [data-brand-shop] [data-slot="button"].border-border:hover,
+.customer-web [data-brand-shop] a.border-border:hover,
+.customer-web [data-brand-shop] [data-slot="button"].border.bg-background:hover {
+  border-color: color-mix(in srgb, var(--color-leaf) 45%, transparent) !important;
+  color: var(--color-leaf) !important;
+  background-color: color-mix(in srgb, var(--color-leaf-soft) 40%, white) !important;
+}
+
+/* Selected address / option cards — keep body text readable on leaf tint */
+.customer-web [data-brand-shop] label.border-primary.bg-primary\/5 p,
+.customer-web [data-brand-shop] label.border-primary.bg-primary\/5 .text-muted-foreground {
+  color: color-mix(in srgb, var(--color-bark) 88%, transparent) !important;
 }

@@ -4,19 +4,15 @@ import { useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { User } from "lucide-react";
 import { navLinks } from "@/lib/site";
-import { useAuthStore } from "@shop/lib/stores/auth-store";
-import { useMounted } from "@shop/lib/hooks";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
 import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
+import { BrandingHeaderAuthActions } from "./BrandingHeaderAuthActions";
 
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 
 export function BrandingShopHeader() {
   const pathname = usePathname();
-  const mounted = useMounted();
-  const { isAuthenticated, setAuthDialogOpen } = useAuthStore();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMobile = () => setMobileOpen(false);
@@ -65,24 +61,7 @@ export function BrandingShopHeader() {
         </ul>
 
         <div className="flex items-center gap-1.5 sm:gap-3">
-          {mounted && !isAuthenticated ? (
-            <button
-              type="button"
-              onClick={() => setAuthDialogOpen(true)}
-              className="hidden items-center gap-1.5 rounded-full border border-sand/80 bg-white px-4 py-2 font-display text-sm font-semibold text-bark transition hover:border-leaf/40 hover:text-leaf sm:inline-flex"
-            >
-              Sign in
-            </button>
-          ) : null}
-          {mounted && isAuthenticated ? (
-            <Link
-              href="/profile"
-              className="hidden items-center gap-1.5 rounded-full border border-sand/80 bg-white px-4 py-2 font-display text-sm font-semibold text-bark transition hover:border-leaf/40 hover:text-leaf sm:inline-flex"
-            >
-              <User className="h-4 w-4" strokeWidth={2.2} />
-              Account
-            </Link>
-          ) : null}
+          <BrandingHeaderAuthActions />
           <BrandingHeaderDownloadButton onNavigate={closeMobile} />
           <BrandingMobileNavSheet
             open={mobileOpen}

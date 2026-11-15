@@ -240,7 +240,7 @@ export interface SubscriptionLifecycleLog {
 }
 
 export const STATUS_CONFIG: Record<SubscriptionStatus, { label: string; className: string }> = {
-  PENDING: { label: "Pending", className: "bg-amber-100 text-amber-800" },
+  PENDING: { label: "Payment pending", className: "bg-amber-100 text-amber-800" },
   ACTIVE: { label: "Active", className: "bg-emerald-100 text-emerald-800" },
   PAUSED: { label: "Paused", className: "bg-amber-100 text-amber-800" },
   CANCELLED: { label: "Cancelled", className: "bg-gray-100 text-gray-700" },

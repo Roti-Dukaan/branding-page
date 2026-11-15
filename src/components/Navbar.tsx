@@ -8,6 +8,7 @@ import { navLinks } from "@/lib/site";
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
 import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
+import { BrandingHeaderAuthActions } from "./BrandingHeaderAuthActions";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -71,7 +72,8 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <BrandingHeaderAuthActions />
           <BrandingHeaderDownloadButton onNavigate={() => setMobileOpen(false)} />
           <BrandingMobileNavSheet
             open={mobileOpen}

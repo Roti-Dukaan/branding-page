@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Shared marketing typography + leaf CTAs for subscription checkout funnel */
+/** Nested under main[data-brand-shop]; kept for route-specific hooks if needed */
 export default function SubscriptionsLayout({ children }: { children: ReactNode }) {
-  return <div data-brand-subscriptions>{children}</div>;
+  return children;
 }

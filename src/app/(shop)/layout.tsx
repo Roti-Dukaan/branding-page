@@ -22,7 +22,12 @@ export default function ShopLayout({ children }: { children: ReactNode }) {
               <AuthProvider>
                 <BrandingShopHeader />
                 <ShopDialogs />
-                <main className="flex-grow pb-24 pt-20 sm:pb-28">{children}</main>
+                <main
+                  data-brand-shop
+                  className="flex-grow bg-cream pb-24 pt-20 text-bark sm:pb-28"
+                >
+                  {children}
+                </main>
                 <Footer />
                 <BrandingFloatingCartBar />
               </AuthProvider>

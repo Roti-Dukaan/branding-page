@@ -108,3 +108,14 @@ export function useSubscriptionActions() {
 
   return { pause, resume, skip, cancel, revokeCancel };
 }
+
+export function useCancelPendingSubscription() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, reason }: { id: string; reason?: string }) =>
+      subscriptionsApi.cancelPending(id, reason),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["my-subscriptions"] });
+    },
+  });
+}

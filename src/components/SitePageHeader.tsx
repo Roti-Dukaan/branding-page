@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { MarketingNavLinks } from "./MarketingNavLinks";
 import { BrandingMobileNavSheet } from "./BrandingMobileNavSheet";
 import { BrandingHeaderDownloadButton } from "./BrandingHeaderDownloadButton";
+import { BrandingHeaderAuthActions } from "./BrandingHeaderAuthActions";
 import { isMarketingNavActive, scrollToHomeSection } from "@/lib/nav-utils";
 
 export function SitePageHeader() {
@@ -35,7 +36,8 @@ export function SitePageHeader() {
 
         <MarketingNavLinks className="flex-1 justify-center" />
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <BrandingHeaderAuthActions />
           <BrandingHeaderDownloadButton onNavigate={() => setMobileOpen(false)} />
           <BrandingMobileNavSheet
             open={mobileOpen}

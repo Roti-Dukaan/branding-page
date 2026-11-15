@@ -136,7 +136,7 @@ function ProfilePageInner() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-cream">
       <div className="mx-auto flex max-w-7xl gap-6 px-4 py-6">
         {isDesktop && (
           <aside className="w-64 shrink-0">
@@ -154,7 +154,7 @@ function ProfilePageInner() {
               ) : (
                 <div className="size-9" aria-hidden />
               )}
-              <h1 className="font-heading text-xl font-semibold text-foreground">
+              <h1 className="font-display text-xl font-semibold text-bark">
                 My Account
               </h1>
             </div>
