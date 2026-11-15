@@ -77,7 +77,8 @@ export function BrandingFloatingCartBar() {
   const mounted = useMounted();
   const itemCount = useCartCount();
   const cartTotal = useCartTotal();
-  const { acceptingOrders, isLoading: kitchenLoading } = useKitchenStatus();
+  const { data: kitchenData, acceptingOrders, isLoading: kitchenLoading } =
+    useKitchenStatus();
   const mobileNavOpen = useBrandingChromeStore((s) => s.mobileNavOpen);
 
   if (mobileNavOpen) {
@@ -85,8 +86,14 @@ export function BrandingFloatingCartBar() {
   }
 
   const isMarketingHome = pathname === "/";
+  // Only show after a successful status fetch for a branch — never when
+  // branchId is missing or the kitchen API failed (otherwise we mis-label as closed).
   const showKitchenStrip =
-    isMarketingHome && mounted && !kitchenLoading && !acceptingOrders;
+    isMarketingHome &&
+    mounted &&
+    !!kitchenData &&
+    !kitchenLoading &&
+    !acceptingOrders;
   const showCartBar =
     mounted && itemCount > 0 && !shouldHideCartBar(pathname);
 

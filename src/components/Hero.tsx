@@ -13,6 +13,7 @@ export function Hero() {
         width={260}
         height={160}
         priority
+        placeholder="empty"
         className="pointer-events-none absolute -top-2 -right-6 z-10 w-44 sm:w-64 lg:-right-10 lg:w-[22rem]"
       />
       <Image
@@ -33,6 +34,8 @@ export function Hero() {
               width={1024}
               height={512}
               priority
+              placeholder="empty"
+              unoptimized
               className="w-[68.5vw] drop-shadow-[0_2px_0_rgba(255,255,255,0.6)] sm:w-[min(82vw,26rem)]"
             />
           </h1>
@@ -73,8 +76,10 @@ function HeroScene() {
           width={1024}
           height={512}
           priority
+          placeholder="empty"
+          unoptimized
           sizes="(min-width: 1024px) 42rem, 100vw"
-          className="w-full [mask-image:linear-gradient(to_bottom,black_75%,transparent)]"
+          className="w-full max-sm:[mask-image:none] sm:[mask-image:linear-gradient(to_bottom,black_75%,transparent)]"
         />
       </div>
       <Image
@@ -100,6 +105,8 @@ function HeroScene() {
           width={1024}
           height={682}
           priority
+          placeholder="empty"
+          unoptimized
           sizes="(min-width: 1024px) 22rem, 40vw"
           className="animate-ride-bob relative w-full drop-shadow-[0_14px_12px_rgba(74,37,18,0.25)]"
         />
@@ -109,6 +116,8 @@ function HeroScene() {
         alt=""
         width={197}
         height={170}
+        placeholder="empty"
+        unoptimized
         className="absolute right-[1.5%] bottom-[13.4%] z-10 w-[22.8%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:right-[-1%] sm:bottom-[23%] sm:w-[25%]"
       />
       <Image
@@ -117,6 +126,8 @@ function HeroScene() {
         width={312}
         height={165}
         priority
+        placeholder="empty"
+        unoptimized
         className="absolute bottom-[3.4%] left-[39%] z-20 w-[49.2%] drop-shadow-[0_16px_14px_rgba(74,37,18,0.3)] sm:bottom-[3%] sm:left-auto sm:right-[8%] sm:w-[52%]"
       />
       <Image
@@ -124,6 +135,8 @@ function HeroScene() {
         alt=""
         width={215}
         height={165}
+        placeholder="empty"
+        unoptimized
         className="absolute bottom-[4%] left-[18.2%] z-30 w-[26.7%] drop-shadow-[0_12px_10px_rgba(74,37,18,0.25)] sm:bottom-0 sm:left-[16%] sm:w-[27%]"
       />
       <Image
